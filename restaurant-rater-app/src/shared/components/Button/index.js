@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import * as Styles from './styles';
 
 const Button = (props) => {
-  const { label, onPress, disabled, loading, outline, nude } = props;
+  const { label, onPress, disabled, loading, outline, nude, style } = props;
 
   return (
     <Styles.Container
+      style={style}
       outline={outline}
       nude={nude}
       onPress={onPress}

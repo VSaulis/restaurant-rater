@@ -17,7 +17,8 @@ namespace RestaurantRater.Repositories
         {
             return query
                 .Include(restaurant => restaurant.CreatedBy)
-                .Include(restaurant => restaurant.Reviews);
+                .Include(restaurant => restaurant.Reviews)
+                .ThenInclude(review => review.CreatedBy);
         }
     }
 }

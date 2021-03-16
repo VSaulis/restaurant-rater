@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using RestaurantRater.Core.Filters;
 using RestaurantRater.Core.Models;
 using RestaurantRater.Core.Repositories;
@@ -15,6 +17,11 @@ namespace RestaurantRater.Repositories
         public async Task<Review> GetRestaurantUserReviewAsync(int id, int restaurantId)
         {
             return await GetAsync(review => review.CreatedById == id && review.RestaurantId == restaurantId);
+        }
+
+        protected override IQueryable<Review> FormatQuery(IQueryable<Review> query)
+        {
+            return query.Include(review => review.CreatedBy);
         }
     }
 }

@@ -5,7 +5,7 @@ import { RestaurantsActions } from 'features/restaurants/actions';
 
 const initialPaging = { limit: 20, offset: 0 };
 
-const useQuizzes = (props) => {
+const useRestaurants = (props) => {
   const { filter, sort } = props;
   const { restaurants, isLoading, isRefreshing, count } = useSelector((state) => state.restaurants);
 
@@ -38,4 +38,4 @@ const useQuizzes = (props) => {
   return { restaurants, isLoading, isRefreshing, loadMore, refresh };
 };
 
-export default useQuizzes;
+export default useRestaurants;

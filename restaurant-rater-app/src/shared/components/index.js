@@ -10,6 +10,7 @@ import Icon from './Icon';
 import Banner from './Banner';
 import SearchInput from './SearchInput';
 import Rating from './Rating';
+import Avatar from './Avatar';
 
 export {
   ScreenLoader,
@@ -24,4 +25,5 @@ export {
   Banner,
   SearchInput,
   Rating,
+  Avatar,
 };

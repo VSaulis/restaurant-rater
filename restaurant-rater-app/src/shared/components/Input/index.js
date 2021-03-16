@@ -4,7 +4,7 @@ import * as Styles from './styles';
 import { Colors } from 'shared/styles';
 
 const Input = (props) => {
-  const { onBlur, onChange, name, value, disabled, placeholder, secureTextEntry } = props;
+  const { onBlur, onChange, name, value, disabled, placeholder, secureTextEntry, label } = props;
 
   const handleTextChange = (text) => {
     onChange({ name, value: text });
@@ -16,6 +16,7 @@ const Input = (props) => {
 
   return (
     <Styles.Container>
+      <Styles.Label>{label}</Styles.Label>
       <Styles.Input
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
@@ -31,6 +32,7 @@ const Input = (props) => {
 
 Input.propTypes = {
   value: PropTypes.PropTypes.string,
+  label: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   name: PropTypes.string,
   placeholder: PropTypes.string,

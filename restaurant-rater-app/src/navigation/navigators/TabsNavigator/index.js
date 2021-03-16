@@ -4,6 +4,7 @@ import { Navigators } from 'shared/constant';
 import ProfileNavigator from '../ProfileNavigator';
 import SettingsNavigator from '../SettingsNavigator';
 import RestaurantsNavigator from '../RestaurantsNavigator';
+import ReviewsNavigator from '../ReviewsNavigator';
 
 const Tabs = createBottomTabNavigator();
 
@@ -15,6 +16,7 @@ function TabsNavigator() {
   return (
     <Tabs.Navigator screenOptions={OPTIONS}>
       <Tabs.Screen name={Navigators.RESTAURANTS} component={RestaurantsNavigator} />
+      <Tabs.Screen name={Navigators.REVIEWS} component={ReviewsNavigator} />
       <Tabs.Screen name={Navigators.PROFILE} component={ProfileNavigator} />
       <Tabs.Screen name={Navigators.SETTINGS} component={SettingsNavigator} />
     </Tabs.Navigator>

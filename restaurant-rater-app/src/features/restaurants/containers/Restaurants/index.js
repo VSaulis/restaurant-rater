@@ -5,6 +5,7 @@ import { RestaurantsListItem } from 'features/restaurants/components';
 import { useNavigation } from '@react-navigation/native';
 import { Screens } from 'shared/constant';
 import { ListSeparator } from 'shared/components';
+import { Spacings } from 'shared/styles';
 
 const Restaurants = (props) => {
   const { style } = props;
@@ -25,7 +26,7 @@ const Restaurants = (props) => {
   return (
     <Styles.Container style={style}>
       <Styles.List
-        contentContainerStyle={Styles.ListContent}
+        contentContainerStyle={Spacings.FULL_PADDING}
         ItemSeparatorComponent={ListSeparator}
         refreshing={isRefreshing || isLoading}
         onRefresh={refresh}

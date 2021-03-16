@@ -40,8 +40,16 @@ export const Headline = styled(SemiBold)`
   font-size: 30px;
 `;
 
+export const Title = styled(RegularText)`
+  font-size: 18px;
+`;
+
 export const Paragraph = styled(RegularText)`
   font-size: 16px;
+`;
+
+export const Subtitle = styled(RegularText)`
+  font-size: 14px;
 `;
 
 export const Subheader = styled(BlackText)`
@@ -55,4 +63,8 @@ export const Button = styled(RegularText)`
 
 export const Caption = styled(RegularText)`
   font-size: 12px;
+`;
+
+export const Label = styled(RegularText)`
+  font-size: 11px;
 `;

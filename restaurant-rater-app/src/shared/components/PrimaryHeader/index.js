@@ -10,7 +10,7 @@ const PrimaryHeader = (props) => {
     <Styles.Container>
       <Styles.SafeArea>
         <Styles.Content>
-          <Typography.Paragraph style={Spacings.BOTTOM_SPACING.XS}>{title}</Typography.Paragraph>
+          <Typography.Title style={Spacings.BOTTOM_SPACING.XS}>{title}</Typography.Title>
         </Styles.Content>
       </Styles.SafeArea>
     </Styles.Container>

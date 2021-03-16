@@ -4,17 +4,17 @@ import { Screens } from 'shared/constant';
 import { RestaurantsScreen } from 'features/restaurants/screens';
 import { primaryHeaderOptions } from '../../config';
 
-const SettingsStack = createStackNavigator();
+const RestaurantsStack = createStackNavigator();
 
 function RestaurantsNavigator() {
   return (
-    <SettingsStack.Navigator screenOptions={primaryHeaderOptions}>
-      <SettingsStack.Screen
+    <RestaurantsStack.Navigator screenOptions={primaryHeaderOptions}>
+      <RestaurantsStack.Screen
         options={{ title: 'Restaurants' }}
         name={Screens.RESTAURANTS}
         component={RestaurantsScreen}
       />
-    </SettingsStack.Navigator>
+    </RestaurantsStack.Navigator>
   );
 }
 
