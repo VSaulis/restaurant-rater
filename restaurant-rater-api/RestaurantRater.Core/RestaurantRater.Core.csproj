@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>RestaurantRater.Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RestaurantRater.Dtos\RestaurantRater.Dtos.csproj" />
+      <ProjectReference Include="..\RestaurantRater.Constants\RestaurantRater.Constants.csproj" />
+      <ProjectReference Include="..\RestaurantRater.Contracts\RestaurantRater.Contracts.csproj" />
+    </ItemGroup>
+    
+</Project>
