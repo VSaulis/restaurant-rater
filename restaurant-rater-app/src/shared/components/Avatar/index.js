@@ -18,7 +18,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  size: 80,
+  size: 40,
 };
 
 export default Avatar;

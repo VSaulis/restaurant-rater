@@ -4,14 +4,16 @@ import { useRestaurant } from 'features/restaurants/hooks';
 import { Colors, Spacings, Typography } from 'shared/styles';
 import { Reviews } from 'features/restaurants/components';
 import { usePermissions } from 'features/auth/hooks';
-import { Permissions } from 'shared/constant';
+import { Permissions, Screens } from 'shared/constant';
 import { Button } from 'shared/components';
+import { useNavigation } from '@react-navigation/native';
 
 const mockUrl = 'http://viahansadmc.com/userfiles/images/trinity.jpg';
 
 const Restaurant = (props) => {
   const { style, id } = props;
   const { hasPermission } = usePermissions();
+  const { navigate } = useNavigation();
   const { restaurant, isLoading } = useRestaurant({ id });
 
   if (isLoading || !restaurant) {
@@ -32,7 +34,11 @@ const Restaurant = (props) => {
           {restaurant.description}
         </Typography.Paragraph>
         {hasPermission(Permissions.Reviews.CREATE) && (
-          <Button style={Spacings.BOTTOM_SPACING.L} label="Add review" />
+          <Button
+            onPress={() => navigate(Screens.REVIEW_FORM)}
+            style={Spacings.BOTTOM_SPACING.L}
+            label="Add review"
+          />
         )}
         <Typography.Subheader style={Spacings.BOTTOM_SPACING.L}>Last reviews</Typography.Subheader>
         <Reviews reviews={restaurant.reviews} />

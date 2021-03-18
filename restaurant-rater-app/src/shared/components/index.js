@@ -11,6 +11,9 @@ import Banner from './Banner';
 import SearchInput from './SearchInput';
 import Rating from './Rating';
 import Avatar from './Avatar';
+import Badge from './Badge';
+import Checkbox from './Checkbox';
+import ExpandedSelect from './ExpandedSelect';
 
 export {
   ScreenLoader,
@@ -26,4 +29,7 @@ export {
   SearchInput,
   Rating,
   Avatar,
+  Badge,
+  Checkbox,
+  ExpandedSelect,
 };

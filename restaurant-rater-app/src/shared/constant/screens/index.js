@@ -5,3 +5,6 @@ export const PROFILE = 'PROFILE';
 export const REVIEWS = 'REVIEWS';
 export const RESTAURANTS = 'RESTAURANTS';
 export const RESTAURANT = 'RESTAURANT';
+export const REVIEW_FORM = 'REVIEW_FORM';
+export const RESTAURANT_FORM = 'RESTAURANT_FORM';
+export const RESTAURANTS_FILTER = 'RESTAURANTS_FILTER';

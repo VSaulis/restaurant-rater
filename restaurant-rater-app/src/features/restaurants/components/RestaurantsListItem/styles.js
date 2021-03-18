@@ -1,26 +1,30 @@
 import styled from 'styled-components/native';
 import { Colors, Sizes } from 'shared/styles';
-import hexToRgba from 'hex-to-rgba';
 
 export const Container = styled.TouchableOpacity`
   position: relative;
+  background-color: ${Colors.WHITE};
+  border-radius: 4px;
+  overflow: hidden;
 `;
 
-export const Image = styled.Image`
+export const Image = styled.ImageBackground`
   height: 185px;
   width: 100%;
-  border-radius: 12px;
   resize-mode: cover;
+  padding: ${Sizes.PADDING}px;
 `;
 
-export const RatingContainer = styled.View`
-  position: absolute;
-  z-index: 1;
-  background-color: ${hexToRgba(Colors.BLACK, 0.5)};
-  border-radius: 5px;
-  padding: ${Sizes.XS}px;
-  right: ${Sizes.S}px;
-  top: ${Sizes.S}px;
+export const Details = styled.View`
+  padding: ${Sizes.PADDING}px;
   flex-direction: row;
-  align-items: center;
+`;
+
+export const RightSide = styled.View`
+  flex: 1;
+`;
+
+export const LeftSide = styled.View`
+  padding-top: 3px;
+  align-items: flex-end;
 `;

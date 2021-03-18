@@ -5,7 +5,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import { authReducer } from 'features/auth/reducers';
 import { profileReducer } from 'features/profile/reducers';
-import { restaurantsReducer, restaurantReducer } from 'features/restaurants/reducers';
+import {
+  restaurantsReducer,
+  restaurantReducer,
+  restaurantsFilterReducer,
+} from 'features/restaurants/reducers';
 import { reviewsReducer } from 'features/reviews/reducers';
 
 const persistConfig = {
@@ -18,6 +22,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   restaurants: restaurantsReducer,
+  restaurantsFilter: restaurantsFilterReducer,
   restaurant: restaurantReducer,
   reviews: reviewsReducer,
 });

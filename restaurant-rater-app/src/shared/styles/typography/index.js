@@ -6,15 +6,29 @@ export const BaseText = styled.Text`
   text-align: ${(props) => (props.center ? 'center' : 'left')};
 `;
 
+// Font family
+
+export const ThinText = styled(BaseText)`
+  font-family: Thin;
+`;
+
+export const ExtraLightText = styled(BaseText)`
+  font-family: ExtraLight;
+`;
+
+export const LightText = styled(BaseText)`
+  font-family: Light;
+`;
+
 export const RegularText = styled(BaseText)`
   font-family: Regular;
 `;
 
-export const BlackText = styled(BaseText)`
-  font-family: Black;
+export const MediumText = styled(BaseText)`
+  font-family: Medium;
 `;
 
-export const SemiBold = styled(BaseText)`
+export const SemiBoldText = styled(BaseText)`
   font-family: SemiBold;
 `;
 
@@ -22,49 +36,62 @@ export const BoldText = styled(BaseText)`
   font-family: Bold;
 `;
 
-// Headings
-
-export const Heading1 = styled(BoldText)`
-  font-size: 34px;
+export const ExtraBoldText = styled(BaseText)`
+  font-family: ExtraBold;
 `;
 
-export const Heading2 = styled(SemiBold)`
-  font-size: 28px;
+export const BlackText = styled(BaseText)`
+  font-family: Black;
 `;
 
-export const Heading3 = styled(BlackText)`
-  font-size: 24px;
+// App fonts
+
+export const Caption = styled(MediumText)`
+  font-size: 12px;
+  color: ${Colors.TEXT_SECONDARY};
 `;
 
-export const Headline = styled(SemiBold)`
-  font-size: 30px;
+export const Badge = styled(SemiBoldText)`
+  font-size: 11px;
+  text-transform: uppercase;
+  color: ${Colors.WHITE};
 `;
 
-export const Title = styled(RegularText)`
-  font-size: 18px;
+export const Title = styled(MediumText)`
+  font-size: 15px;
 `;
 
-export const Paragraph = styled(RegularText)`
-  font-size: 16px;
-`;
-
-export const Subtitle = styled(RegularText)`
+export const Paragraph = styled(MediumText)`
   font-size: 14px;
 `;
 
-export const Subheader = styled(BlackText)`
+export const Heading = styled(SemiBoldText)`
+  font-size: 24px;
+`;
+
+// ---------------
+
+export const Heading1 = styled(SemiBoldText)`
+  font-size: 34px;
+`;
+
+export const Heading3 = styled(SemiBoldText)`
+  font-size: 24px;
+`;
+
+export const Subtitle = styled(SemiBoldText)`
+  font-size: 14px;
+`;
+
+export const Subheader = styled(SemiBoldText)`
   font-size: 20px;
 `;
 
-export const Button = styled(RegularText)`
+export const Button = styled(SemiBoldText)`
   font-size: 14px;
   text-transform: uppercase;
 `;
 
-export const Caption = styled(RegularText)`
-  font-size: 12px;
-`;
-
-export const Label = styled(RegularText)`
+export const Label = styled(SemiBoldText)`
   font-size: 11px;
 `;

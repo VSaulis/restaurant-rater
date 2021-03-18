@@ -3,6 +3,7 @@ import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
 import { AirbnbRating } from 'react-native-ratings';
+import { Colors } from 'shared/styles';
 
 const Rating = (props) => {
   const { style, value, ratingCount, imageSize, readonly } = props;
@@ -10,6 +11,9 @@ const Rating = (props) => {
   return (
     <Styles.Container style={style}>
       <AirbnbRating
+        starStyle={Styles.StarContainer}
+        selectedColor={Colors.PRIMARY}
+        unSelectedColor={Colors.LIGHT_GREY_2}
         showRating={false}
         defaultRating={value}
         size={imageSize}

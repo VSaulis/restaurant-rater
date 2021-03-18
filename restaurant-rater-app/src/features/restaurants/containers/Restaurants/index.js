@@ -3,28 +3,48 @@ import * as Styles from './styles';
 import { useRestaurants } from 'features/restaurants/hooks';
 import { RestaurantsListItem } from 'features/restaurants/components';
 import { useNavigation } from '@react-navigation/native';
-import { Screens } from 'shared/constant';
-import { ListSeparator } from 'shared/components';
-import { Spacings } from 'shared/styles';
+import { Permissions, Screens } from 'shared/constant';
+import { IconButton, ListSeparator } from 'shared/components';
+import { Colors, Icons, Spacings, Typography } from 'shared/styles';
+import { usePermissions } from 'features/auth/hooks';
 
 const Restaurants = (props) => {
   const { style } = props;
-  const navigation = useNavigation();
-  const { isRefreshing, isLoading, refresh, restaurants, loadMore } = useRestaurants({
+  const { navigate } = useNavigation();
+  const { hasPermission } = usePermissions();
+  const {
+    isRefreshing,
+    isLoading,
+    refresh,
+    restaurants,
+    loadMore,
+    count,
+  } = useRestaurants({
     filter: {},
-    sort: {},
   });
 
-  const handleItemPress = (id) => {
-    navigation.navigate(Screens.RESTAURANT, { id });
-  };
-
-  const renderItem = ({ item }) => (
-    <RestaurantsListItem onPress={() => handleItemPress(item.id)} restaurant={item} />
-  );
+  const createPermitted = hasPermission(Permissions.Restaurants.CREATE);
 
   return (
     <Styles.Container style={style}>
+      <Styles.Header>
+        <Typography.Heading>Restaurants</Typography.Heading>
+        <Typography.Caption>{`${count} results found`}</Typography.Caption>
+        {createPermitted && (
+          <IconButton
+            onPress={() => navigate(Screens.RESTAURANT_FORM)}
+            iconColor={Colors.PRIMARY}
+            icon={Icons.ADD}
+          />
+        )}
+        {!createPermitted && (
+          <IconButton
+            onPress={() => navigate(Screens.RESTAURANTS_FILTER)}
+            iconColor={Colors.PRIMARY}
+            icon={Icons.FILTER}
+          />
+        )}
+      </Styles.Header>
       <Styles.List
         contentContainerStyle={Spacings.FULL_PADDING}
         ItemSeparatorComponent={ListSeparator}
@@ -34,7 +54,12 @@ const Restaurants = (props) => {
         onEndReached={loadMore}
         onEndReachedThreshold={0}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={renderItem}
+        renderItem={({ item }) => (
+          <RestaurantsListItem
+            onPress={() => navigate(Screens.RESTAURANT, { id: item.id })}
+            restaurant={item}
+          />
+        )}
       />
     </Styles.Container>
   );

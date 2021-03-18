@@ -1,41 +1,37 @@
-import { useState } from 'react';
-import useDeepCompareEffect from 'use-deep-compare-effect';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRole } from 'features/auth/hooks';
+import { SortUtils } from 'features/restaurants/utils';
+import useRestaurantsFilter from '../useRestaurantsFilter';
+import { useInfinityLoadingList } from 'shared/hooks';
 import { RestaurantsActions } from 'features/restaurants/actions';
 
-const initialPaging = { limit: 20, offset: 0 };
-
-const useRestaurants = (props) => {
-  const { filter, sort } = props;
-  const { restaurants, isLoading, isRefreshing, count } = useSelector((state) => state.restaurants);
-
-  const [paging, setPaging] = useState(initialPaging);
+const useRestaurants = () => {
+  const { restaurants, isLoading, isRefreshing, count } = useSelector(
+    (state) => state.restaurants
+  );
+  const { filter } = useRestaurantsFilter();
+  const { isRegularUser } = useRole();
   const dispatch = useDispatch();
-  const canLoadMore = count > paging.offset;
 
-  useDeepCompareEffect(() => {
-    const request = { filter, sort, paging };
-
-    if (paging.offset === 0) {
-      dispatch(RestaurantsActions.refreshRestaurants(request));
-    }
-
-    if (paging.offset > 0 && canLoadMore) {
-      dispatch(RestaurantsActions.getRestaurants(request));
-    }
-  }, [dispatch, filter, sort, paging]);
-
-  const loadMore = () => {
-    if (canLoadMore && !isLoading && !isRefreshing) {
-      setPaging({ ...paging, offset: paging.offset + paging.limit });
-    }
+  const refreshAction = (request) => {
+    dispatch(RestaurantsActions.refreshRestaurants(request));
   };
 
-  const refresh = () => {
-    setPaging({ ...paging, offset: 0 });
+  const loadMoreAction = (request) => {
+    dispatch(RestaurantsActions.getRestaurants(request));
   };
 
-  return { restaurants, isLoading, isRefreshing, loadMore, refresh };
+  const { loadMore, refresh } = useInfinityLoadingList({
+    sort: SortUtils.getSortByRole(isRegularUser),
+    filter,
+    isLoading,
+    isRefreshing,
+    count,
+    refreshAction,
+    loadMoreAction,
+  });
+
+  return { restaurants, isLoading, isRefreshing, loadMore, refresh, count };
 };
 
 export default useRestaurants;

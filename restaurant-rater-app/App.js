@@ -10,12 +10,15 @@ import { StatusBar } from 'expo-status-bar';
 
 function App() {
   const [loaded] = useFonts({
-    ExtraLight: require('./assets/fonts/SourceSansPro-ExtraLight.ttf'),
-    Light: require('./assets/fonts/SourceSansPro-Light.ttf'),
-    Regular: require('./assets/fonts/SourceSansPro-Regular.ttf'),
-    Black: require('./assets/fonts/SourceSansPro-Black.ttf'),
-    SemiBold: require('./assets/fonts/SourceSansPro-SemiBold.ttf'),
-    Bold: require('./assets/fonts/SourceSansPro-Bold.ttf'),
+    Thin: require('./assets/fonts/FiraSans-Thin.ttf'),
+    ExtraLight: require('./assets/fonts/FiraSans-ExtraLight.ttf'),
+    Light: require('./assets/fonts/FiraSans-Light.ttf'),
+    Regular: require('./assets/fonts/FiraSans-Regular.ttf'),
+    Medium: require('./assets/fonts/FiraSans-Medium.ttf'),
+    SemiBold: require('./assets/fonts/FiraSans-SemiBold.ttf'),
+    Bold: require('./assets/fonts/FiraSans-Bold.ttf'),
+    ExtraBold: require('./assets/fonts/FiraSans-ExtraBold.ttf'),
+    Black: require('./assets/fonts/FiraSans-Black.ttf'),
   });
 
   if (!loaded) {
