@@ -7,7 +7,6 @@ import {
   RestaurantFormScreen,
   RestaurantScreen,
   RestaurantsFilterScreen,
-  ReviewFormScreen,
 } from 'features/restaurants/screens';
 import { UserDeleteScreen, UserEditScreen } from 'features/users/screens';
 import { CategoryAddScreen, CategoryEditScreen } from 'features/categories/screens';
@@ -16,6 +15,7 @@ import {
   ProfileDeleteScreen,
   ProfileEditScreen,
 } from 'features/profile/screens';
+import { ReviewAddScreen, ReviewEditScreen } from 'features/reviews/screens';
 
 const MainStack = createStackNavigator();
 
@@ -28,7 +28,8 @@ function MainNavigator() {
     <MainStack.Navigator screenOptions={OPTIONS}>
       <MainStack.Screen name={Navigators.TABS} component={TabsNavigator} />
       <MainStack.Screen name={Screens.RESTAURANT} component={RestaurantScreen} />
-      <MainStack.Screen name={Screens.REVIEW_FORM} component={ReviewFormScreen} />
+      <MainStack.Screen name={Screens.REVIEW_ADD} component={ReviewAddScreen} />
+      <MainStack.Screen name={Screens.REVIEW_EDIT} component={ReviewEditScreen} />
       <MainStack.Screen name={Screens.USER_DELETE} component={UserDeleteScreen} />
       <MainStack.Screen name={Screens.USER_EDIT} component={UserEditScreen} />
       <MainStack.Screen name={Screens.RESTAURANT_FORM} component={RestaurantFormScreen} />

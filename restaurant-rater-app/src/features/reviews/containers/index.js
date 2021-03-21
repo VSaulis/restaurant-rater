@@ -1,3 +1,5 @@
 import Reviews from './Reviews';
+import ReviewAdd from './ReviewAdd';
+import ReviewEdit from './ReviewEdit';
 
-export { Reviews };
+export { Reviews, ReviewAdd, ReviewEdit };

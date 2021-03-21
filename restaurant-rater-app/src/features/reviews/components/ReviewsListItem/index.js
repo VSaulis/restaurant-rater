@@ -3,7 +3,7 @@ import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
 import { Colors, Spacings, Typography } from 'shared/styles';
 import { Avatar, Rating } from 'shared/components';
-import { ReviewTypes } from 'features/reviews/utils';
+import { ReviewPropTypes } from 'features/reviews/utils';
 
 const mockUrl = 'http://viahansadmc.com/userfiles/images/trinity.jpg';
 
@@ -31,7 +31,7 @@ const ReviewsListItem = (props) => {
 
 ReviewsListItem.propTypes = {
   style: ViewPropTypes.style,
-  review: ReviewTypes.ReviewsListItemType.isRequired,
+  review: ReviewPropTypes.ReviewsListItemType.isRequired,
 };
 
 ReviewsListItem.defaultProps = {

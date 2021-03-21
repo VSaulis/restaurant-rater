@@ -20,6 +20,9 @@ const Restaurant = (props) => {
     return <Styles.Container />;
   }
 
+  const showEdit = hasPermission(Permissions.Reviews.Edit) && !!restaurant.userReview;
+  const showAdd = hasPermission(Permissions.Reviews.Create) && !restaurant.userReview;
+
   return (
     <Styles.Container style={style}>
       <Styles.ImageContainer source={{ uri: mockUrl }} />
@@ -27,20 +30,37 @@ const Restaurant = (props) => {
         <Typography.Subheader style={Spacings.BOTTOM_SPACING.XS}>
           {restaurant.title}
         </Typography.Subheader>
-        <Typography.Caption style={Spacings.BOTTOM_SPACING.S} color={Colors.TEXT_SECONDARY}>
+        <Typography.Caption
+          style={Spacings.BOTTOM_SPACING.S}
+          color={Colors.TEXT_SECONDARY}
+        >
           {restaurant.created}
         </Typography.Caption>
-        <Typography.Paragraph style={Spacings.BOTTOM_SPACING.L} color={Colors.TEXT_SECONDARY}>
+        <Typography.Paragraph
+          style={Spacings.BOTTOM_SPACING.L}
+          color={Colors.TEXT_SECONDARY}
+        >
           {restaurant.description}
         </Typography.Paragraph>
-        {hasPermission(Permissions.Reviews.CREATE) && (
+        {showAdd && (
           <Button
-            onPress={() => navigate(Screens.REVIEW_FORM)}
+            onPress={() => navigate(Screens.REVIEW_ADD, { restaurantId: restaurant.id })}
             style={Spacings.BOTTOM_SPACING.L}
             label="Add review"
           />
         )}
-        <Typography.Subheader style={Spacings.BOTTOM_SPACING.L}>Last reviews</Typography.Subheader>
+        {showEdit && (
+          <Button
+            onPress={() =>
+              navigate(Screens.REVIEW_EDIT, { id: restaurant.userReview.id })
+            }
+            style={Spacings.BOTTOM_SPACING.L}
+            label="Edit review"
+          />
+        )}
+        <Typography.Subheader style={Spacings.BOTTOM_SPACING.L}>
+          Last reviews
+        </Typography.Subheader>
         <Reviews reviews={restaurant.reviews} />
       </Styles.Details>
     </Styles.Container>

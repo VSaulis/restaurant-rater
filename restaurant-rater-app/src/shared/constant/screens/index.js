@@ -1,9 +1,11 @@
 export const LOGIN = 'LOGIN';
 export const REGISTRATION = 'REGISTRATION';
-export const REVIEWS = 'REVIEWS';
-
 export const WALKTHROUGH = 'WALKTHROUGH';
-export const REVIEW_FORM = 'REVIEW_FORM';
+
+export const REVIEWS = 'REVIEWS';
+export const REVIEW_ADD = 'REVIEW_ADD';
+export const REVIEW_EDIT = 'REVIEW_EDIT';
+export const REVIEW_DELETE = 'REVIEW_DELETE';
 
 export const USER = 'USER';
 export const USER_EDIT = 'USER_EDIT';

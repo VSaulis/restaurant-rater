@@ -9,7 +9,9 @@ const RestaurantAdd = () => {
 
   return (
     <Styles.Container>
-      <Typography.Heading style={Spacings.BOTTOM_SPACING.L}>Add restaurant</Typography.Heading>
+      <Typography.Heading style={Spacings.BOTTOM_SPACING.L}>
+        Add restaurant
+      </Typography.Heading>
       <RestaurantForm isLoading={isAdding} onSubmit={addRestaurant} />
     </Styles.Container>
   );

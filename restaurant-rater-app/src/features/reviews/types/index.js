@@ -1,3 +1,4 @@
 import * as ReviewsTypes from './reviews';
+import * as ReviewTypes from './review';
 
-export { ReviewsTypes };
+export { ReviewsTypes, ReviewTypes };

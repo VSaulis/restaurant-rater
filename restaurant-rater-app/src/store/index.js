@@ -10,7 +10,7 @@ import {
   restaurantReducer,
   restaurantsFilterReducer,
 } from 'features/restaurants/reducers';
-import { reviewsReducer } from 'features/reviews/reducers';
+import { reviewReducer, reviewsReducer } from 'features/reviews/reducers';
 import { walkthroughReducer } from 'features/walkthrough/reducers';
 import { userReducer, usersReducer } from 'features/users/reducers';
 import { categoriesReducer, categoryReducer } from 'features/categories/reducers';
@@ -28,6 +28,7 @@ const rootReducer = combineReducers({
   restaurantsFilter: restaurantsFilterReducer,
   restaurant: restaurantReducer,
   reviews: reviewsReducer,
+  review: reviewReducer,
   users: usersReducer,
   user: userReducer,
   categories: categoriesReducer,

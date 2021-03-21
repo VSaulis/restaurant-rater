@@ -1,3 +1,4 @@
 import reviewsReducer from './reviews';
+import reviewReducer from './review';
 
-export { reviewsReducer };
+export { reviewsReducer, reviewReducer };

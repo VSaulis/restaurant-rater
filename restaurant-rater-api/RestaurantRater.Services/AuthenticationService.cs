@@ -9,7 +9,6 @@ using RestaurantRater.Core.Models;
 using RestaurantRater.Core.Repositories;
 using RestaurantRater.Core.Services;
 using RestaurantRater.Dtos.Authentication;
-using NotImplementedException = System.NotImplementedException;
 
 namespace RestaurantRater.Services
 {

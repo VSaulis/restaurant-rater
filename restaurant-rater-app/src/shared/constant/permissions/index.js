@@ -3,7 +3,8 @@ export const Restaurants = {
 };
 
 export const Reviews = {
-  CREATE: 'Permissions.Reviews.Create',
+  Create: 'Permissions.Reviews.Create',
+  Edit: 'Permissions.Reviews.Edit',
 };
 
 export const Users = {

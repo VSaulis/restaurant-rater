@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { Navigators, Permissions, Screens } from 'shared/constant';
-import ReviewsNavigator from '../ReviewsNavigator';
+import { Permissions, Screens } from 'shared/constant';
 import { RestaurantsScreen } from 'features/restaurants/screens';
 import { usePermissions } from 'features/auth/hooks';
 import { UsersScreen } from 'features/users/screens';
 import { CategoriesScreen } from 'features/categories/screens';
 import { ProfileScreen } from 'features/profile/screens';
+import { ReviewsScreen } from 'features/reviews/screens';
 
 const Tabs = createBottomTabNavigator();
 
@@ -22,10 +22,12 @@ function TabsNavigator() {
   return (
     <Tabs.Navigator screenOptions={OPTIONS}>
       <Tabs.Screen name={Screens.RESTAURANTS} component={RestaurantsScreen} />
-      <Tabs.Screen name={Navigators.REVIEWS} component={ReviewsNavigator} />
+      <Tabs.Screen name={Screens.REVIEWS} component={ReviewsScreen} />
       {usersAccess && <Tabs.Screen name={Screens.USERS} component={UsersScreen} />}
-      {categoriesAccess && <Tabs.Screen name={Screens.CATEGORIES} component={CategoriesScreen} />}
-      <Tabs.Screen name={Navigators.PROFILE} component={ProfileScreen} />
+      {categoriesAccess && (
+        <Tabs.Screen name={Screens.CATEGORIES} component={CategoriesScreen} />
+      )}
+      <Tabs.Screen name={Screens.PROFILE} component={ProfileScreen} />
     </Tabs.Navigator>
   );
 }

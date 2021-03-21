@@ -1,3 +1,4 @@
-import * as ReviewTypes from './reviewTypes';
+import * as ReviewPropTypes from './reviewPropTypes';
+import * as Schemas from './schemas';
 
-export { ReviewTypes };
+export { ReviewPropTypes, Schemas };

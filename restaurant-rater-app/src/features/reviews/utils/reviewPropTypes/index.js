@@ -8,3 +8,8 @@ export const ReviewsListItemType = PropTypes.shape({
   visited: PropTypes.string.isRequired,
   createdBy: PropTypes.object.isRequired,
 });
+
+export const ReviewFormData = PropTypes.shape({
+  comment: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+});

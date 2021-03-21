@@ -11,6 +11,7 @@ namespace RestaurantRater.Dtos.Restaurant
         public decimal LowestRating { get; set; }
         public decimal HighestRating { get; set; }
         public int ReviewsCount { get; set; }
+        public ReviewsListItemDto? UserReview { get; set; }
         public List<ReviewsListItemDto> Reviews { get; set; }
     }
 }

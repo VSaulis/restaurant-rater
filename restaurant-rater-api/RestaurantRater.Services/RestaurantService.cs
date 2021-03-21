@@ -10,24 +10,28 @@ using RestaurantRater.Core.Models;
 using RestaurantRater.Core.Repositories;
 using RestaurantRater.Core.Services;
 using RestaurantRater.Dtos.Restaurant;
+using RestaurantRater.Dtos.Review;
 
 namespace RestaurantRater.Services
 {
     public class RestaurantService : IRestaurantService
     {
         private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IReviewRepository _reviewRepository;
         private readonly HttpContext _httpContext;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
         public RestaurantService
         (
+            IReviewRepository reviewRepository,
             IRestaurantRepository restaurantRepository,
             IMapper mapper,
             IUnitOfWork unitOfWork,
             IHttpContextAccessor httpContextAccessor
         )
         {
+            _reviewRepository = reviewRepository;
             _httpContext = httpContextAccessor.HttpContext;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -51,8 +55,14 @@ namespace RestaurantRater.Services
         {
             var restaurant = await _restaurantRepository.GetByIdAsync(id);
             if (restaurant == null) return new ResultResponse<RestaurantDto>("Restaurant is not found");
-
+            
             var restaurantDto = _mapper.Map<Restaurant, RestaurantDto>(restaurant);
+            
+            var loggedUser = (User) _httpContext.Items.GetOrDefault("User");
+            var userReview = await _reviewRepository.GetRestaurantUserReviewAsync(loggedUser.Id, id);
+            var userReviewDto = _mapper.Map<Review, ReviewsListItemDto>(userReview);
+            restaurantDto.UserReview = userReviewDto;
+            
             return new ResultResponse<RestaurantDto>(restaurantDto);
         }
 

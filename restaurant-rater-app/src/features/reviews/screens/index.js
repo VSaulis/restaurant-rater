@@ -1,3 +1,5 @@
 import ReviewsScreen from './Reviews';
+import ReviewAddScreen from './ReviewAdd';
+import ReviewEditScreen from './ReviewEdit';
 
-export { ReviewsScreen };
+export { ReviewsScreen, ReviewAddScreen, ReviewEditScreen };
