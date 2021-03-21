@@ -1,3 +1,4 @@
 import useProfile from './useProfile';
+import useChangePassword from './useChangePassword';
 
-export { useProfile };
+export { useProfile, useChangePassword };

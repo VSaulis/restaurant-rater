@@ -36,5 +36,15 @@ namespace RestaurantRater.Controllers
             if (!response.IsValid) return BadRequest(response.Message);
             return Ok(response);
         }
+        
+        [HttpPost("change-password")]
+        public async Task<IActionResult> Register([FromBody] ChangePasswordRequest request)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
+
+            var response = await _authenticationService.ChangePasswordAsync(request);
+            if (!response.IsValid) return BadRequest(response.Message);
+            return Ok(response);
+        }
     }
 }

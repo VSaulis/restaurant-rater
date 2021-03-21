@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Navigators, Permissions, Screens } from 'shared/constant';
-import ProfileNavigator from '../ProfileNavigator';
 import ReviewsNavigator from '../ReviewsNavigator';
 import { RestaurantsScreen } from 'features/restaurants/screens';
 import { usePermissions } from 'features/auth/hooks';
 import { UsersScreen } from 'features/users/screens';
 import { CategoriesScreen } from 'features/categories/screens';
+import { ProfileScreen } from 'features/profile/screens';
 
 const Tabs = createBottomTabNavigator();
 
@@ -25,7 +25,7 @@ function TabsNavigator() {
       <Tabs.Screen name={Navigators.REVIEWS} component={ReviewsNavigator} />
       {usersAccess && <Tabs.Screen name={Screens.USERS} component={UsersScreen} />}
       {categoriesAccess && <Tabs.Screen name={Screens.CATEGORIES} component={CategoriesScreen} />}
-      <Tabs.Screen name={Navigators.PROFILE} component={ProfileNavigator} />
+      <Tabs.Screen name={Navigators.PROFILE} component={ProfileScreen} />
     </Tabs.Navigator>
   );
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Profile } from 'features/profile/containers';
-import { ScreenContainer } from 'shared/components';
+import { FullScreenContainer } from 'shared/components';
 
 const ProfileScreen = () => {
   return (
-    <ScreenContainer>
+    <FullScreenContainer>
       <Profile />
-    </ScreenContainer>
+    </FullScreenContainer>
   );
 };
 

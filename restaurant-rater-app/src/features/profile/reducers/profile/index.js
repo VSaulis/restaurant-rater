@@ -16,9 +16,16 @@ export default (state = initialState, { type, payload }) => {
       });
     }
 
+    case ProfileTypes.CHANGE_PASSWORD_START:
     case ProfileTypes.UPDATE_PROFILE_START: {
       return update(state, {
         isUpdating: { $set: true },
+      });
+    }
+
+    case ProfileTypes.CHANGE_PASSWORD: {
+      return update(state, {
+        isUpdating: { $set: false },
       });
     }
 
@@ -36,9 +43,15 @@ export default (state = initialState, { type, payload }) => {
       });
     }
 
+    case ProfileTypes.UPDATE_PROFILE_ERROR:
+    case ProfileTypes.CHANGE_PASSWORD_ERROR: {
+      return update(state, {
+        isUpdating: { $set: false },
+      });
+    }
+
     case AuthTypes.LOGOUT:
-    case ProfileTypes.GET_PROFILE_ERROR:
-    case ProfileTypes.UPDATE_PROFILE_ERROR: {
+    case ProfileTypes.GET_PROFILE_ERROR: {
       return initialState;
     }
 

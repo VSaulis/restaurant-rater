@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.Internal;
 using Microsoft.AspNetCore.Http;
 using RestaurantRater.Constants.Enums;
 using RestaurantRater.Contracts;
@@ -8,6 +9,7 @@ using RestaurantRater.Core.Models;
 using RestaurantRater.Core.Repositories;
 using RestaurantRater.Core.Services;
 using RestaurantRater.Dtos.Authentication;
+using NotImplementedException = System.NotImplementedException;
 
 namespace RestaurantRater.Services
 {
@@ -85,6 +87,25 @@ namespace RestaurantRater.Services
             var loggedUserDto = _mapper.Map<User, LoggedUserDto>(user);
             loggedUserDto.Token = token;
             return new ResultResponse<LoggedUserDto>(loggedUserDto);
+        }
+
+        public async Task<BaseResponse> ChangePasswordAsync(ChangePasswordRequest request)
+        {
+            var loggedUser = (User) _httpContext.Items.GetOrDefault("User");
+            
+            if (!_encryptionService.VerifyHash(request.CurrentPassword, loggedUser.PasswordHash, loggedUser.PasswordSalt))
+            {
+                return new BaseResponse("Password is invalid");
+            }
+            
+            var passwordSalt = _encryptionService.CreateSalt();
+            var passwordHash = _encryptionService.CreateHash(request.Password, passwordSalt);
+
+            loggedUser.PasswordHash = passwordHash;
+            loggedUser.PasswordSalt = passwordSalt;
+            _userRepository.Update(loggedUser);
+            await _unitOfWork.SaveChangesAsync();
+            return new BaseResponse();
         }
     }
 }

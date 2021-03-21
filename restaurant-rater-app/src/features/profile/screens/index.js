@@ -1,4 +1,5 @@
 import ProfileScreen from './Profile';
-import PropertiesScreen from './Properties';
+import ProfileEditScreen from './ProfileEdit';
+import ProfileChangePasswordScreen from './ProfileChangePassword';
 
-export { ProfileScreen, PropertiesScreen };
+export { ProfileScreen, ProfileEditScreen, ProfileChangePasswordScreen };

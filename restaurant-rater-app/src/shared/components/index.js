@@ -17,6 +17,7 @@ import ExpandedSelect from './ExpandedSelect';
 import Slider from './Slider';
 import BottomSheet from './BottomSheet';
 import BottomSheetOption from './BottomSheetOption';
+import FullScreenContainer from './FullScreenContainer';
 
 export {
   Slider,
@@ -38,4 +39,5 @@ export {
   ExpandedSelect,
   BottomSheet,
   BottomSheetOption,
+  FullScreenContainer,
 };

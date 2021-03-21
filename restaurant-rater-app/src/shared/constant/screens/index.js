@@ -1,6 +1,5 @@
 export const LOGIN = 'LOGIN';
 export const REGISTRATION = 'REGISTRATION';
-export const PROFILE = 'PROFILE';
 export const REVIEWS = 'REVIEWS';
 
 export const USER = 'USER';
@@ -8,6 +7,10 @@ export const USER_EDIT = 'USER_EDIT';
 export const USERS = 'USERS';
 export const WALKTHROUGH = 'WALKTHROUGH';
 export const REVIEW_FORM = 'REVIEW_FORM';
+
+export const PROFILE = 'PROFILE';
+export const PROFILE_EDIT = 'PROFILE_EDIT';
+export const PROFILE_CHANGE_PASSWORD = 'PROFILE_CHANGE_PASSWORD';
 
 export const RESTAURANTS = 'RESTAURANTS';
 export const RESTAURANT = 'RESTAURANT';
