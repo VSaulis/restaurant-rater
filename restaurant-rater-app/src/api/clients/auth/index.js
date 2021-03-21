@@ -10,10 +10,10 @@ export const register = async (request) => {
   return httpClient.post(`${baseUrl}/register`, request);
 };
 
-export const getLoggedUser = async () => {
-  return httpClient.get(`${baseUrl}/logged-user`);
-};
-
 export const changePassword = async (request) => {
   return httpClient.put(`${baseUrl}/change-password`, request);
+};
+
+export const deleteAccount = async () => {
+  return httpClient.delete(`${baseUrl}/delete-account`);
 };

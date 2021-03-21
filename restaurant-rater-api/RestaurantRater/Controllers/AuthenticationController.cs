@@ -48,5 +48,27 @@ namespace RestaurantRater.Controllers
             if (!response.IsValid) return BadRequest(response.Message);
             return Ok(response);
         }
+        
+        [HttpGet("logged-user")]
+        [Authorize]
+        public async Task<IActionResult> GetLoggedUser()
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
+
+            var response = await _authenticationService.GetLoggedUserAsync();
+            if (!response.IsValid) return BadRequest(response.Message);
+            return Ok(response);
+        }
+        
+        [HttpDelete("delete-account")]
+        [Authorize]
+        public async Task<IActionResult> Delete()
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
+
+            var response = await _authenticationService.DeleteAsync();
+            if (!response.IsValid) return BadRequest(response.Message);
+            return Ok(response);
+        }
     }
 }

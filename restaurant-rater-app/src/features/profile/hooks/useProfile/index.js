@@ -1,12 +1,16 @@
-const profile = {
-  id: 1,
-  firstName: 'Vytautas',
-  lastName: 'Saulis',
-  avatar: 'https://blog.photofeeler.com/wp-content/uploads/2017/12/linkedin-profile-picture.jpg',
-};
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { ProfileActions } from 'features/profile/actions';
 
-function useProfile() {
-  return { profile };
-}
+const useProfile = () => {
+  const dispatch = useDispatch();
+  const { profile, isLoading, isRefreshing } = useSelector((state) => state.profile);
+
+  const refresh = () => {
+    dispatch(ProfileActions.refreshProfile());
+  };
+
+  return { profile, isLoading, isRefreshing, refresh };
+};
 
 export default useProfile;

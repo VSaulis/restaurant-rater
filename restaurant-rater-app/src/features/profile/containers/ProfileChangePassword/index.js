@@ -18,7 +18,9 @@ const ProfileChangePassword = (props) => {
   return (
     <Styles.Container style={style}>
       <Styles.Content contentContainerStyle={Spacings.FULL_PADDING}>
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.L}>Change password</Typography.Heading1>
+        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.L}>
+          Change password
+        </Typography.Heading1>
         <Controller
           as={undefined}
           defaultValue=""
@@ -41,16 +43,16 @@ const ProfileChangePassword = (props) => {
           as={undefined}
           defaultValue=""
           control={control}
-          name="password"
+          name="newPassword"
           render={({ onChange, onBlur, value }) => (
             <Input
-              error={errors.password}
+              error={errors.newPassword}
               onBlur={onBlur}
-              label="Password"
+              label="New password"
               secureTextEntry
               onChange={(event) => onChange(event.value)}
               value={value}
-              placeholder="Enter your password"
+              placeholder="Enter your new password"
             />
           )}
         />

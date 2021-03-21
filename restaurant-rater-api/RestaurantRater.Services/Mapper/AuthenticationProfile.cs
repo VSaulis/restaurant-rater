@@ -11,7 +11,7 @@ namespace RestaurantRater.Services.Mapper
         {
             CreateMap<User, LoggedUserDto>()
                 .ForMember(
-                    dest => dest.User,
+                    dest => dest.Profile,
                     opt => opt.MapFrom(src => src)
                 )
                 .ForMember(

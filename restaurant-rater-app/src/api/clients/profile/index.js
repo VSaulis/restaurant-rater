@@ -1,17 +1,11 @@
-import { PROFILE_MOCK } from 'api/clients/profile/mocks';
+import httpClient from 'api/httpClient';
+
+const baseUrl = '/profile';
 
 export const getProfile = async () => {
-  return Promise.resolve({
-    result: {
-      profile: PROFILE_MOCK,
-    },
-  });
+  return httpClient.get(`${baseUrl}`);
 };
 
-export const updateProfile = async () => {
-  return Promise.resolve({
-    result: {
-      profile: PROFILE_MOCK,
-    },
-  });
+export const editProfile = async (request) => {
+  return httpClient.put(`${baseUrl}`, request);
 };

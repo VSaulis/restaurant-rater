@@ -66,7 +66,7 @@ const Login = (props) => {
           onPress={handleSubmit(login)}
         />
         <Typography.Paragraph
-          onPress={() => navigation.navigate(Screens.REGISTRATION)}
+          onPress={() => navigation.replace(Screens.REGISTRATION)}
           center
           color={Colors.NEW_GREY}
         >

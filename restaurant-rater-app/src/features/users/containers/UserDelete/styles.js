@@ -5,8 +5,9 @@ export const Container = styled.View`
   flex: 1;
 `;
 
-export const Content = styled.ScrollView`
+export const Content = styled.View`
   flex: 1;
+  padding: ${Sizes.PADDING}px;
 `;
 
 export const Footer = styled.View`

@@ -89,6 +89,14 @@ namespace RestaurantRater.Services
             return new ResultResponse<LoggedUserDto>(loggedUserDto);
         }
 
+        public async Task<BaseResponse> DeleteAsync()
+        {
+            var loggedUser = (User) _httpContext.Items.GetOrDefault("User");
+            _userRepository.Delete(loggedUser);
+            await _unitOfWork.SaveChangesAsync();
+            return new BaseResponse();
+        }
+
         public async Task<BaseResponse> ChangePasswordAsync(ChangePasswordRequest request)
         {
             var loggedUser = (User) _httpContext.Items.GetOrDefault("User");
@@ -99,13 +107,20 @@ namespace RestaurantRater.Services
             }
             
             var passwordSalt = _encryptionService.CreateSalt();
-            var passwordHash = _encryptionService.CreateHash(request.Password, passwordSalt);
+            var passwordHash = _encryptionService.CreateHash(request.NewPassword, passwordSalt);
 
             loggedUser.PasswordHash = passwordHash;
             loggedUser.PasswordSalt = passwordSalt;
             _userRepository.Update(loggedUser);
             await _unitOfWork.SaveChangesAsync();
             return new BaseResponse();
+        }
+
+        public async Task<ResultResponse<LoggedUserDto>> GetLoggedUserAsync()
+        {
+            var loggedUser = (User) _httpContext.Items.GetOrDefault("User");
+            var loggedUserDto = _mapper.Map<User, LoggedUserDto>(loggedUser);
+            return new ResultResponse<LoggedUserDto>(loggedUserDto);
         }
     }
 }

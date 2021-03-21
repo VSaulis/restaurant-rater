@@ -1,4 +1,5 @@
 import UsersScreen from './Users';
 import UserEditScreen from './UserEdit';
+import UserDeleteScreen from './UserDelete';
 
-export { UsersScreen, UserEditScreen };
+export { UsersScreen, UserEditScreen, UserDeleteScreen };

@@ -30,7 +30,7 @@ const UserActions = (props) => {
       options.push({
         label: 'Edit user',
         icon: Icons.ADD,
-        onPress: () => navigation.navigate(Screens.USER_EDIT, {id: selectedUser.id}),
+        onPress: () => navigation.navigate(Screens.USER_EDIT, { id: selectedUser.id }),
       });
     }
 
@@ -38,7 +38,7 @@ const UserActions = (props) => {
       options.push({
         label: 'Delete user',
         icon: Icons.ADD,
-        onPress: () => {},
+        onPress: () => navigation.navigate(Screens.USER_DELETE, { id: selectedUser.id }),
       });
     }
 
@@ -46,7 +46,12 @@ const UserActions = (props) => {
   };
 
   return (
-    <BottomSheet style={style} snapPoints={[300]} visible={!!selectedUser} onClose={onClose}>
+    <BottomSheet
+      style={style}
+      snapPoints={[300]}
+      visible={!!selectedUser}
+      onClose={onClose}
+    >
       <Styles.UserContainer>
         {selectedUser && <UsersListItem user={selectedUser} disabled />}
       </Styles.UserContainer>

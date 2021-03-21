@@ -7,6 +7,7 @@ import AuthNavigator from '../AuthNavigator';
 import { useAuth } from 'features/auth/hooks';
 import { WalkthroughScreen } from 'features/walkthrough/screens';
 import { useWalkthrough } from 'features/walkthrough/hooks';
+import { NavigationService } from 'shared/services';
 
 const RootStack = createStackNavigator();
 
@@ -19,7 +20,7 @@ function RootNavigator() {
   const { isWalkthroughCompleted } = useWalkthrough();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={NavigationService.navigationRef}>
       <RootStack.Navigator screenOptions={OPTIONS}>
         {!isWalkthroughCompleted && !isLogged && (
           <RootStack.Screen name={Screens.WALKTHROUGH} component={WalkthroughScreen} />
@@ -27,7 +28,9 @@ function RootNavigator() {
         {isWalkthroughCompleted && !isLogged && (
           <RootStack.Screen name={Navigators.AUTH} component={AuthNavigator} />
         )}
-        {isLogged && <RootStack.Screen name={Navigators.MAIN} component={MainNavigator} />}
+        {isLogged && (
+          <RootStack.Screen name={Navigators.MAIN} component={MainNavigator} />
+        )}
       </RootStack.Navigator>
     </NavigationContainer>
   );

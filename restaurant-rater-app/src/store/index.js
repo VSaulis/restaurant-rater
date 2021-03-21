@@ -18,7 +18,7 @@ import { categoriesReducer, categoryReducer } from 'features/categories/reducers
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['auth', 'walkthrough'],
+  whitelist: ['auth', 'walkthrough', 'profile'],
 };
 
 const rootReducer = combineReducers({

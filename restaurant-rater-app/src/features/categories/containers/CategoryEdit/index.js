@@ -8,14 +8,18 @@ import { RefreshControl } from 'react-native';
 
 const CategoryEdit = (props) => {
   const { id } = props;
-  const { editCategory, isUpdating, isRefreshing, refresh, category } = useCategoryEdit({ id });
+  const { editCategory, isUpdating, isRefreshing, refresh, category } = useCategoryEdit({
+    id,
+  });
 
   return (
     <Styles.Container
       contentContainerStyle={Spacings.FULL_PADDING}
       refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={refresh} />}
     >
-      <Typography.Heading style={Spacings.BOTTOM_SPACING.L}>Edit category</Typography.Heading>
+      <Typography.Heading style={Spacings.BOTTOM_SPACING.L}>
+        Edit category
+      </Typography.Heading>
       <CategoryForm isLoading={isUpdating} onSubmit={editCategory} formData={category} />
     </Styles.Container>
   );

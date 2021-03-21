@@ -36,11 +36,13 @@ httpClient.interceptors.response.use(
       }
 
       case 401: {
+        FlashMessageService.showError('Your session is over. Please sign in again');
         store.dispatch({ type: AuthTypes.LOGOUT });
         return promise.reject(error);
       }
 
       default: {
+        FlashMessageService.showError('Error has occurred');
         return promise.reject(error);
       }
     }

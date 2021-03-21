@@ -9,6 +9,8 @@ namespace RestaurantRater.Core.Services
     {
         Task<ResultResponse<LoggedUserDto>> LoginAsync(LoginRequest request);
         Task<ResultResponse<LoggedUserDto>> RegisterAsync(RegisterRequest request);
+        Task<BaseResponse> DeleteAsync();
         Task<BaseResponse> ChangePasswordAsync(ChangePasswordRequest request);
+        Task<ResultResponse<LoggedUserDto>> GetLoggedUserAsync();
     }
 }

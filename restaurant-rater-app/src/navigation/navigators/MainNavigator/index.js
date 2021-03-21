@@ -9,9 +9,13 @@ import {
   RestaurantsFilterScreen,
   ReviewFormScreen,
 } from 'features/restaurants/screens';
-import { UserEditScreen } from 'features/users/screens';
+import { UserDeleteScreen, UserEditScreen } from 'features/users/screens';
 import { CategoryAddScreen, CategoryEditScreen } from 'features/categories/screens';
-import { ProfileChangePasswordScreen, ProfileEditScreen } from 'features/profile/screens';
+import {
+  ProfileChangePasswordScreen,
+  ProfileDeleteScreen,
+  ProfileEditScreen,
+} from 'features/profile/screens';
 
 const MainStack = createStackNavigator();
 
@@ -25,9 +29,13 @@ function MainNavigator() {
       <MainStack.Screen name={Navigators.TABS} component={TabsNavigator} />
       <MainStack.Screen name={Screens.RESTAURANT} component={RestaurantScreen} />
       <MainStack.Screen name={Screens.REVIEW_FORM} component={ReviewFormScreen} />
+      <MainStack.Screen name={Screens.USER_DELETE} component={UserDeleteScreen} />
       <MainStack.Screen name={Screens.USER_EDIT} component={UserEditScreen} />
       <MainStack.Screen name={Screens.RESTAURANT_FORM} component={RestaurantFormScreen} />
-      <MainStack.Screen name={Screens.RESTAURANTS_FILTER} component={RestaurantsFilterScreen} />
+      <MainStack.Screen
+        name={Screens.RESTAURANTS_FILTER}
+        component={RestaurantsFilterScreen}
+      />
       <MainStack.Screen name={Screens.CATEGORY_ADD} component={CategoryAddScreen} />
       <MainStack.Screen name={Screens.CATEGORY_EDIT} component={CategoryEditScreen} />
       <MainStack.Screen name={Screens.RESTAURANT_ADD} component={RestaurantAddScreen} />
@@ -36,6 +44,7 @@ function MainNavigator() {
         component={ProfileChangePasswordScreen}
       />
       <MainStack.Screen name={Screens.PROFILE_EDIT} component={ProfileEditScreen} />
+      <MainStack.Screen name={Screens.PROFILE_DELETE} component={ProfileDeleteScreen} />
     </MainStack.Navigator>
   );
 }

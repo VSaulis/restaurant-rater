@@ -1,6 +1,6 @@
 import { CategoryTypes } from 'features/categories/types';
 import { CategoriesClient } from 'api/clients';
-import { FlashMessageService } from 'shared/services';
+import { FlashMessageService, NavigationService } from 'shared/services';
 
 export function getCategory(id) {
   return async (dispatch) => {
@@ -33,6 +33,7 @@ export function editCategory(id, request) {
       const { result } = await CategoriesClient.editCategory(id, request);
       dispatch({ type: CategoryTypes.EDIT_CATEGORY, payload: { category: result } });
       FlashMessageService.showSuccess('Category is successfully updated');
+      NavigationService.goBack();
     } catch (exception) {
       dispatch({ type: CategoryTypes.EDIT_CATEGORY_ERROR });
     }
@@ -46,6 +47,7 @@ export function addCategory(request) {
       await CategoriesClient.addCategory(request);
       dispatch({ type: CategoryTypes.ADD_CATEGORY });
       FlashMessageService.showSuccess('Category is successfully added');
+      NavigationService.goBack();
     } catch (exception) {
       dispatch({ type: CategoryTypes.ADD_CATEGORY_ERROR });
     }
@@ -59,6 +61,7 @@ export function deleteCategory(id) {
       await CategoriesClient.deleteCategory(id);
       dispatch({ type: CategoryTypes.DELETE_CATEGORY, payload: { id } });
       FlashMessageService.showSuccess('Category is successfully deleted');
+      NavigationService.goBack();
     } catch (exception) {
       dispatch({ type: CategoryTypes.DELETE_CATEGORY_ERROR });
     }
