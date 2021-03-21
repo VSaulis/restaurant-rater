@@ -32,18 +32,16 @@ httpClient.interceptors.response.use(
     switch (status) {
       case 400: {
         FlashMessageService.showError(data);
-        promise.reject(error);
-        break;
+        return promise.reject(error);
       }
 
       case 401: {
         store.dispatch({ type: AuthTypes.LOGOUT });
-        promise.reject(error);
-        break;
+        return promise.reject(error);
       }
 
       default: {
-        promise.reject(error);
+        return promise.reject(error);
       }
     }
   }

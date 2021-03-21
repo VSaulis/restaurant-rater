@@ -14,6 +14,6 @@ export const getLoggedUser = async () => {
   return httpClient.get(`${baseUrl}/logged-user`);
 };
 
-export const changePassword = async () => {
-  return httpClient.put(`${baseUrl}/change-password`);
+export const changePassword = async (request) => {
+  return httpClient.put(`${baseUrl}/change-password`, request);
 };

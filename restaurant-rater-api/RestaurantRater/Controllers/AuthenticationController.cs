@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantRater.Contracts.Authentication;
 using RestaurantRater.Core.Services;
@@ -37,7 +38,8 @@ namespace RestaurantRater.Controllers
             return Ok(response);
         }
         
-        [HttpPost("change-password")]
+        [HttpPut("change-password")]
+        [Authorize]
         public async Task<IActionResult> Register([FromBody] ChangePasswordRequest request)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
