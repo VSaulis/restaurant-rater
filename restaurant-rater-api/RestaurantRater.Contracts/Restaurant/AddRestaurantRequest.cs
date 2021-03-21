@@ -9,5 +9,8 @@ namespace RestaurantRater.Contracts.Restaurant
         
         [Required]
         public string Description { get; set; }
+        
+        [Required]
+        public int CategoryId { get; set; }
     }
 }

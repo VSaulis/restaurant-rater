@@ -2,6 +2,7 @@ import React from 'react';
 import * as Styles from './styles';
 import PropTypes from 'prop-types';
 import { Typography } from 'shared/styles';
+import { SharedPropTypes } from 'shared/utils';
 
 const Badge = (props) => {
   const { label, style, onPress } = props;
@@ -14,7 +15,7 @@ const Badge = (props) => {
 };
 
 Badge.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: SharedPropTypes.NumberOrStringType.isRequired,
   onPress: PropTypes.func,
 };
 

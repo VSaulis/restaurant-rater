@@ -30,13 +30,13 @@ namespace RestaurantRater.Controllers
             return Ok(response);
         }
         
-        [HttpPut]
+        [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Edit([FromBody] EditReviewRequest request)
+        public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] EditReviewRequest request)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
 
-            var response = await _reviewService.EditAsync(request);
+            var response = await _reviewService.EditAsync(id, request);
             if (!response.IsValid) return BadRequest(response.Message);
             return Ok(response);
         }

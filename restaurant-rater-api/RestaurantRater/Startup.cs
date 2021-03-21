@@ -1,13 +1,10 @@
 using System;
-using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using RestaurantRater.Middlewares;
@@ -55,9 +52,9 @@ namespace RestaurantRater
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"]))
                 };
             });
-
-            services.AddHttpContextAccessor();
             
+            services.AddHttpContextAccessor();
+
             services.AddControllers().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
@@ -71,7 +68,7 @@ namespace RestaurantRater
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseCors(RestaurantRaterPolicy);
             app.UseStaticFiles();
             // app.UseHttpsRedirection();

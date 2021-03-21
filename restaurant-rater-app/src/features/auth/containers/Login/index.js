@@ -1,53 +1,78 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
 import { useLogin } from 'features/auth/hooks';
 import { Button, Input } from 'shared/components';
 import { Colors, Spacings, Typography } from 'shared/styles';
+import { useNavigation } from '@react-navigation/native';
+import { Screens } from 'shared/constant';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm, Controller } from 'react-hook-form';
+import { Schemas } from 'features/auth/utils';
 
 const Login = (props) => {
   const { style } = props;
+  const navigation = useNavigation();
   const { login, isLoading } = useLogin();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    login({ email, password });
-  };
+  const { control, handleSubmit, errors } = useForm({ resolver: yupResolver(Schemas.loginSchema) });
 
   return (
     <Styles.Container style={style}>
-      <Styles.Content style={Spacings.BOTTOM_SPACING.L}>
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.XXL}>
-          Easy to earn anywhere {'\n'}and anytime
-        </Typography.Heading1>
-        <Typography.Paragraph color={Colors.GREY} style={Spacings.BOTTOM_SPACING.L}>
-          Sign in to your account
+      <Styles.Content contentContainerStyle={Spacings.FULL_PADDING}>
+        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.M}>Welcome Back</Typography.Heading1>
+        <Typography.Paragraph color={Colors.NEW_GREY} style={Spacings.BOTTOM_SPACING.L}>
+          Enter your Email for sign in. Enjoy your food :)
         </Typography.Paragraph>
-        <Styles.FormContainer style={Spacings.BOTTOM_SPACING.XXL}>
-          <Input
-            onChange={({ value }) => setEmail(value)}
-            value={email}
-            placeholder="Enter your email"
-          />
-          <Input
-            onChange={({ value }) => setPassword(value)}
-            value={password}
-            placeholder="Enter your password"
-          />
-        </Styles.FormContainer>
-        <Button
-          disabled={!email || !password}
-          label="Sign in"
-          loading={isLoading}
-          onPress={handleLogin}
+        <Controller
+          as={undefined}
+          defaultValue=""
+          control={control}
+          name="email"
+          render={({ onChange, onBlur, value }) => (
+            <Input
+              error={errors.email}
+              onBlur={onBlur}
+              style={Spacings.BOTTOM_SPACING.L}
+              label="Email"
+              onChange={(event) => onChange(event.value)}
+              value={value}
+              placeholder="Enter your email"
+            />
+          )}
+        />
+        <Controller
+          as={undefined}
+          defaultValue=""
+          control={control}
+          name="password"
+          render={({ onChange, onBlur, value }) => (
+            <Input
+              error={errors.password}
+              onBlur={onBlur}
+              label="Password"
+              secureTextEntry
+              onChange={(event) => onChange(event.value)}
+              value={value}
+              placeholder="Enter your password"
+            />
+          )}
         />
       </Styles.Content>
       <Styles.Footer>
-        <Typography.Paragraph color={Colors.GREY}>Don’t have an account?</Typography.Paragraph>
-        <Styles.ButtonContainer>
-          <Button nude label="Register" />
-        </Styles.ButtonContainer>
+        <Button
+          style={Spacings.BOTTOM_SPACING.L}
+          label="Sign in"
+          loading={isLoading}
+          onPress={handleSubmit(login)}
+        />
+        <Typography.Paragraph
+          onPress={() => navigation.navigate(Screens.REGISTRATION)}
+          center
+          color={Colors.NEW_GREY}
+        >
+          {`Do not have account? `}
+          <Typography.Link>Sign up</Typography.Link>
+        </Typography.Paragraph>
       </Styles.Footer>
     </Styles.Container>
   );

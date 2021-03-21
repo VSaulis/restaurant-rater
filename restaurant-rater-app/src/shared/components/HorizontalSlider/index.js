@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Styles from './styles';
-import { SharedTypes } from 'shared/utils';
+import { SharedPropTypes } from 'shared/utils';
 import { Sizes, Spacings } from 'shared/styles';
 
 const HorizontalSlider = (props) => {
@@ -24,7 +24,7 @@ const HorizontalSlider = (props) => {
 
 HorizontalSlider.propTypes = {
   gap: PropTypes.number,
-  items: PropTypes.arrayOf(SharedTypes.HorizontalSliderItemType).isRequired,
+  items: PropTypes.arrayOf(SharedPropTypes.HorizontalSliderItemType).isRequired,
   renderItem: PropTypes.func.isRequired,
 };
 

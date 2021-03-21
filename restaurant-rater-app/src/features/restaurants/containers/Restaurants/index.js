@@ -12,14 +12,7 @@ const Restaurants = (props) => {
   const { style } = props;
   const { navigate } = useNavigation();
   const { hasPermission } = usePermissions();
-  const {
-    isRefreshing,
-    isLoading,
-    refresh,
-    restaurants,
-    loadMore,
-    count,
-  } = useRestaurants({
+  const { isRefreshing, isLoading, refresh, restaurants, loadMore, count } = useRestaurants({
     filter: {},
   });
 
@@ -32,7 +25,7 @@ const Restaurants = (props) => {
         <Typography.Caption>{`${count} results found`}</Typography.Caption>
         {createPermitted && (
           <IconButton
-            onPress={() => navigate(Screens.RESTAURANT_FORM)}
+            onPress={() => navigate(Screens.RESTAURANT_ADD)}
             iconColor={Colors.PRIMARY}
             icon={Icons.ADD}
           />

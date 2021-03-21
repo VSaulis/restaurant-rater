@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
-import { RestaurantTypes } from 'features/restaurants/utils';
+import { RestaurantPropTypes } from 'features/restaurants/utils';
 import ReviewsListItem from '../ReviewsListItem';
 
 const Reviews = (props) => {
@@ -21,7 +21,7 @@ const Reviews = (props) => {
 
 Reviews.propTypes = {
   style: ViewPropTypes.style,
-  reviews: PropTypes.arrayOf(RestaurantTypes.ReviewsListItem).isRequired,
+  reviews: PropTypes.arrayOf(RestaurantPropTypes.ReviewsListItem).isRequired,
 };
 
 Reviews.defaultProps = {

@@ -1,10 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { Navigators } from 'shared/constant';
+import { Navigators, Screens } from 'shared/constant';
 import MainNavigator from '../MainNavigator';
 import AuthNavigator from '../AuthNavigator';
 import { useAuth } from 'features/auth/hooks';
+import { WalkthroughScreen } from 'features/walkthrough/screens';
+import { useWalkthrough } from 'features/walkthrough/hooks';
 
 const RootStack = createStackNavigator();
 
@@ -14,12 +16,18 @@ const OPTIONS = {
 
 function RootNavigator() {
   const { isLogged } = useAuth();
+  const { isWalkthroughCompleted } = useWalkthrough();
 
   return (
     <NavigationContainer>
       <RootStack.Navigator screenOptions={OPTIONS}>
+        {!isWalkthroughCompleted && !isLogged && (
+          <RootStack.Screen name={Screens.WALKTHROUGH} component={WalkthroughScreen} />
+        )}
+        {isWalkthroughCompleted && !isLogged && (
+          <RootStack.Screen name={Navigators.AUTH} component={AuthNavigator} />
+        )}
         {isLogged && <RootStack.Screen name={Navigators.MAIN} component={MainNavigator} />}
-        {!isLogged && <RootStack.Screen name={Navigators.AUTH} component={AuthNavigator} />}
       </RootStack.Navigator>
     </NavigationContainer>
   );

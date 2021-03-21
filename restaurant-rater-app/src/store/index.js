@@ -11,11 +11,14 @@ import {
   restaurantsFilterReducer,
 } from 'features/restaurants/reducers';
 import { reviewsReducer } from 'features/reviews/reducers';
+import { walkthroughReducer } from 'features/walkthrough/reducers';
+import { userReducer, usersReducer } from 'features/users/reducers';
+import { categoriesReducer, categoryReducer } from 'features/categories/reducers';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'walkthrough'],
 };
 
 const rootReducer = combineReducers({
@@ -25,6 +28,11 @@ const rootReducer = combineReducers({
   restaurantsFilter: restaurantsFilterReducer,
   restaurant: restaurantReducer,
   reviews: reviewsReducer,
+  users: usersReducer,
+  user: userReducer,
+  categories: categoriesReducer,
+  category: categoryReducer,
+  walkthrough: walkthroughReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

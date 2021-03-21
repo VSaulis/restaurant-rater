@@ -1,5 +1,6 @@
 import update from 'immutability-helper';
 import { RestaurantsTypes } from 'features/restaurants/types';
+import { AuthTypes } from 'features/auth/types';
 
 const initialState = {
   restaurants: [],
@@ -38,6 +39,7 @@ export default (state = initialState, { type, payload }) => {
       });
     }
 
+    case AuthTypes.LOGOUT:
     case RestaurantsTypes.GET_RESTAURANTS_ERROR:
     case RestaurantsTypes.REFRESH_RESTAURANTS_ERROR: {
       return initialState;

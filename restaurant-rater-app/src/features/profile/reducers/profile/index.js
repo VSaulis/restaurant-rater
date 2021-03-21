@@ -1,5 +1,6 @@
 import update from 'immutability-helper';
 import { ProfileTypes } from 'features/profile/types';
+import { AuthTypes } from 'features/auth/types';
 
 const initialState = {
   profile: false,
@@ -35,6 +36,7 @@ export default (state = initialState, { type, payload }) => {
       });
     }
 
+    case AuthTypes.LOGOUT:
     case ProfileTypes.GET_PROFILE_ERROR:
     case ProfileTypes.UPDATE_PROFILE_ERROR: {
       return initialState;

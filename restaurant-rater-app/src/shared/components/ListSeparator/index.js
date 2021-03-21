@@ -14,7 +14,7 @@ ListSeparator.propTypes = {
 };
 
 ListSeparator.defaultProps = {
-  height: Sizes.S,
+  height: Sizes.M,
 };
 
 export default ListSeparator;

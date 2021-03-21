@@ -3,5 +3,5 @@ import { Colors } from 'shared/styles';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${Colors.BACKGROUND};
+  background-color: ${Colors.WHITE};
 `;

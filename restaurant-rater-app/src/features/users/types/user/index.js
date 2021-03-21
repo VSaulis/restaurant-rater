@@ -1,0 +1,15 @@
+export const GET_USER_START = 'GET_USER_START';
+export const GET_USER = 'GET_USER';
+export const GET_USER_ERROR = 'GET_USER_ERROR';
+
+export const REFRESH_USER_START = 'REFRESH_USER_START';
+export const REFRESH_USER = 'REFRESH_USER';
+export const REFRESH_USER_ERROR = 'REFRESH_USER_ERROR';
+
+export const EDIT_USER_START = 'EDIT_USER_START';
+export const EDIT_USER = 'EDIT_USER';
+export const EDIT_USER_ERROR = 'EDIT_USER_ERROR';
+
+export const DELETE_USER_START = 'DELETE_USER_START';
+export const DELETE_USER = 'DELETE_USER';
+export const DELETE_USER_ERROR = 'DELETE_USER_ERROR';

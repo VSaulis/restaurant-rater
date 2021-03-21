@@ -3,6 +3,6 @@
     public interface ITokenService
     {
         string GenerateRefreshToken();
-        string GenerateToken(int id);
+        string GenerateToken(string email);
     }
 }

@@ -3,24 +3,23 @@ import { Colors, Sizes, Typography } from 'shared/styles';
 
 export const Container = styled.View`
   width: 100%;
-  border-bottom-width: 1px;
-  height: 50px;
-  border-bottom-color: ${Colors.LIGHT_GREY};
 `;
 
 export const Label = styled(Typography.Label)`
   text-transform: uppercase;
-  position: absolute;
-  left: ${Sizes.S}px;
-  top: ${Sizes.S}px;
-  color: ${Colors.PRIMARY};
+  color: ${Colors.NEW_GREY};
 `;
 
 export const Input = styled.TextInput`
   color: ${Colors.TEXT_PRIMARY};
-  font-size: 13px;
-  padding-horizontal: ${Sizes.S}px;
-  padding-top: ${Sizes.XS + 12}px;
-  flex: 1;
+  font-size: 14px;
+  height: 40px;
+  padding: 0;
   font-family: Regular;
+  border-bottom-width: 1px;
+  border-bottom-color: ${(props) => (props.error ? Colors.NEW_DANGER : Colors.LIGHT_GREY)};
+`;
+
+export const Error = styled(Typography.Error)`
+  margin-top: ${Sizes.XS}px;
 `;

@@ -46,11 +46,14 @@ namespace RestaurantRater.Services
             return new ResultResponse<UserDto>(userDto);
         }
 
-        public async Task<BaseResponse> EditAsync(EditUserRequest request)
+        public async Task<BaseResponse> EditAsync(int id, EditUserRequest request)
         {
-            var user = await _userRepository.GetByIdAsync(request.Id);
+            var user = await _userRepository.GetByIdAsync(id);
             if (user == null) return new BaseResponse("User is not found");
             
+            user.Email = request.Email;
+            user.FirstName = request.FirstName;
+            user.LastName = request.LastName;
             _userRepository.Update(user);
             await _unitOfWork.SaveChangesAsync();
             return new BaseResponse();

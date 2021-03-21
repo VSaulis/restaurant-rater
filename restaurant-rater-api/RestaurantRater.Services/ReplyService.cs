@@ -54,9 +54,9 @@ namespace RestaurantRater.Services
             return new BaseResponse();
         }
 
-        public async Task<BaseResponse> EditAsync(EditReplyRequest request)
+        public async Task<BaseResponse> EditAsync(int id, EditReplyRequest request)
         {
-            var reply = await _replyRepository.GetByIdAsync(request.Id);
+            var reply = await _replyRepository.GetByIdAsync(id);
             if (reply == null) return new BaseResponse("Reply is not found");
             
             _replyRepository.Update(reply);

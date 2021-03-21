@@ -69,9 +69,9 @@ namespace RestaurantRater.Services
             return new BaseResponse();
         }
 
-        public async Task<BaseResponse> EditAsync(EditReviewRequest request)
+        public async Task<BaseResponse> EditAsync(int id, EditReviewRequest request)
         {
-            var review = await _reviewRepository.GetByIdAsync(request.Id);
+            var review = await _reviewRepository.GetByIdAsync(id);
             if (review == null) return new BaseResponse("Review is not found");
 
             _reviewRepository.Update(review);

@@ -1,4 +1,4 @@
-import * as RestaurantTypes from './restaurantTypes';
+import * as RestaurantPropTypes from './restaurantPropTypes';
 import * as SortUtils from './sort';
 
-export { RestaurantTypes, SortUtils };
+export { RestaurantPropTypes, SortUtils };

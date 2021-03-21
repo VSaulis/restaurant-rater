@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
-import { RestaurantTypes } from 'features/restaurants/utils';
+import { RestaurantPropTypes } from 'features/restaurants/utils';
 import { Spacings, Typography } from 'shared/styles';
 import { Badge, Rating } from 'shared/components';
 
@@ -35,7 +35,7 @@ const RestaurantsListItem = (props) => {
 RestaurantsListItem.propTypes = {
   style: ViewPropTypes.style,
   onPress: PropTypes.func.isRequired,
-  restaurant: RestaurantTypes.RestaurantsListItemType.isRequired,
+  restaurant: RestaurantPropTypes.RestaurantsListItemType.isRequired,
 };
 
 RestaurantsListItem.defaultProps = {

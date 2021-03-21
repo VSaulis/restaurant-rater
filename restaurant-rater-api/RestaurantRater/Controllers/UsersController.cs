@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RestaurantRater.Constants.Constants;
 using RestaurantRater.Contracts.User;
 using RestaurantRater.Core.Services;
 using RestaurantRater.System.Extensions;
@@ -18,13 +19,13 @@ namespace RestaurantRater.Controllers
             _userService = userService;
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Edit([FromBody] EditUserRequest request)
+        public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] EditUserRequest request)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState.GetErrorMessages());
 
-            var response = await _userService.EditAsync(request);
+            var response = await _userService.EditAsync(id, request);
             if (!response.IsValid) return BadRequest(response.Message);
             return Ok(response);
         }

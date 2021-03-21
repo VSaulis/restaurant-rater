@@ -16,6 +16,7 @@ namespace RestaurantRater.Services.DI
                 configure.AddProfile<ReviewProfile>();
                 configure.AddProfile<ReplyProfile>();
                 configure.AddProfile<UserProfile>();
+                configure.AddProfile<CategoryProfile>();
             }, typeof(ServicesModule));
 
             services.AddScoped<ITokenService, TokenService>();
@@ -28,6 +29,7 @@ namespace RestaurantRater.Services.DI
             services.AddScoped<IReviewService, ReviewService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IReplyService, ReplyService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }

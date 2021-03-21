@@ -14,8 +14,12 @@ import Avatar from './Avatar';
 import Badge from './Badge';
 import Checkbox from './Checkbox';
 import ExpandedSelect from './ExpandedSelect';
+import Slider from './Slider';
+import BottomSheet from './BottomSheet';
+import BottomSheetOption from './BottomSheetOption';
 
 export {
+  Slider,
   ScreenLoader,
   Button,
   ScreenContainer,
@@ -32,4 +36,6 @@ export {
   Badge,
   Checkbox,
   ExpandedSelect,
+  BottomSheet,
+  BottomSheetOption,
 };

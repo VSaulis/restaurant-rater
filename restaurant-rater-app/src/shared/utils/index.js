@@ -1,4 +1,4 @@
 import * as Mapper from './mapper';
-import * as SharedTypes from './sharedTypes';
+import * as SharedPropTypes from './sharedPropTypes';
 
-export { Mapper, SharedTypes };
+export { Mapper, SharedPropTypes };

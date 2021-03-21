@@ -52,16 +52,16 @@ namespace RestaurantRater.Services
             _userRepository.Update(user);
             await _unitOfWork.SaveChangesAsync();
 
-            var token = _tokenService.GenerateToken(user.Id);
+            var token = _tokenService.GenerateToken(user.Email);
             var loggedUserDto = _mapper.Map<User, LoggedUserDto>(user);
             loggedUserDto.Token = token;
             return new ResultResponse<LoggedUserDto>(loggedUserDto);
         }
 
-        public async Task<BaseResponse> RegisterAsync(RegisterRequest request)
+        public async Task<ResultResponse<LoggedUserDto>> RegisterAsync(RegisterRequest request)
         {
             var user = await _userRepository.GetByEmailAsync(request.Email);
-            if (user != null) return new BaseResponse("User with this email is already exist");
+            if (user != null) return new ResultResponse<LoggedUserDto>("User with this email is already exist");
             
             var passwordSalt = _encryptionService.CreateSalt();
             var passwordHash = _encryptionService.CreateHash(request.Password, passwordSalt);
@@ -75,11 +75,16 @@ namespace RestaurantRater.Services
                 Role = request.Role,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
+                RefreshToken = _tokenService.GenerateRefreshToken()
             };
                 
             await _userRepository.AddAsync(user);
             await _unitOfWork.SaveChangesAsync();
-            return new BaseResponse();
+            
+            var token = _tokenService.GenerateToken(user.Email);
+            var loggedUserDto = _mapper.Map<User, LoggedUserDto>(user);
+            loggedUserDto.Token = token;
+            return new ResultResponse<LoggedUserDto>(loggedUserDto);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace RestaurantRater.Core.Services
         Task<ListResponse<ReviewsListItemDto>> ListAsync(ListReviewsRequest request);
         Task<ResultResponse<ReviewDto>> GetAsync(int id);
         Task<BaseResponse> AddAsync(AddReviewRequest request);
-        Task<BaseResponse> EditAsync(EditReviewRequest request);
+        Task<BaseResponse> EditAsync(int id, EditReviewRequest request);
         Task<BaseResponse> DeleteAsync(int id);
     }
 }

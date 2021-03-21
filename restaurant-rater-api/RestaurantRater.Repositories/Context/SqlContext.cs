@@ -38,6 +38,11 @@ namespace RestaurantRater.Repositories.Context
                 .HasOne(restaurant => restaurant.CreatedBy)
                 .WithMany(user => user.Restaurants)
                 .HasForeignKey(restaurant => restaurant.CreatedById);
+            
+            modelBuilder.Entity<Restaurant>()
+                .HasOne(restaurant => restaurant.Category)
+                .WithMany(category => category.Restaurants)
+                .HasForeignKey(restaurant => restaurant.CategoryId);
         }
         
         private static void OnRestaurantImageModelCreating(ModelBuilder modelBuilder)
@@ -67,6 +72,7 @@ namespace RestaurantRater.Repositories.Context
                 .HasForeignKey<Reply>(reply => reply.ReviewId);
         }
 
+        public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Review> Reviews { get; set; }

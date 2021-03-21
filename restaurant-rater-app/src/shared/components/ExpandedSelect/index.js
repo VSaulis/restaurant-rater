@@ -3,7 +3,7 @@ import * as Styles from './styles';
 import PropTypes from 'prop-types';
 import { ViewPropTypes } from 'react-native';
 import Checkbox from 'shared/components/Checkbox';
-import { SharedTypes } from 'shared/utils';
+import { SharedPropTypes } from 'shared/utils';
 import _ from 'lodash';
 import { Typography } from 'shared/styles';
 
@@ -31,8 +31,8 @@ const ExpandedSelect = (props) => {
 
 ExpandedSelect.propTypes = {
   style: ViewPropTypes.style,
-  options: PropTypes.arrayOf(SharedTypes.OptionType).isRequired,
-  value: PropTypes.arrayOf(SharedTypes.NumberOrStringType),
+  options: PropTypes.arrayOf(SharedPropTypes.OptionType).isRequired,
+  value: PropTypes.arrayOf(SharedPropTypes.NumberOrStringType),
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,

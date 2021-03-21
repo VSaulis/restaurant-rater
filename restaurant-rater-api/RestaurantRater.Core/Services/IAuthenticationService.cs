@@ -8,6 +8,6 @@ namespace RestaurantRater.Core.Services
     public interface IAuthenticationService
     {
         Task<ResultResponse<LoggedUserDto>> LoginAsync(LoginRequest request);
-        Task<BaseResponse> RegisterAsync(RegisterRequest request);
+        Task<ResultResponse<LoggedUserDto>> RegisterAsync(RegisterRequest request);
     }
 }

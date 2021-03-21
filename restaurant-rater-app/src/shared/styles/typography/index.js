@@ -61,12 +61,17 @@ export const Title = styled(MediumText)`
   font-size: 15px;
 `;
 
-export const Paragraph = styled(MediumText)`
+export const Paragraph = styled(RegularText)`
   font-size: 14px;
 `;
 
+export const Link = styled(RegularText)`
+  font-size: 14px;
+  color: ${Colors.NEW_PRIMARY};
+`;
+
 export const Heading = styled(SemiBoldText)`
-  font-size: 24px;
+  font-size: 26px;
 `;
 
 // ---------------
@@ -93,5 +98,10 @@ export const Button = styled(SemiBoldText)`
 `;
 
 export const Label = styled(SemiBoldText)`
-  font-size: 11px;
+  font-size: 12px;
+`;
+
+export const Error = styled(RegularText)`
+  font-size: 12px;
+  color: ${Colors.NEW_DANGER};
 `;

@@ -1,5 +1,6 @@
 import update from 'immutability-helper';
 import { RestaurantsFilterTypes } from 'features/restaurants/types';
+import { AuthTypes } from 'features/auth/types';
 
 const defaultFilter = {
   categories: [],
@@ -22,6 +23,10 @@ export default (state = initialState, { type, payload }) => {
       return update(state, {
         filter: { $set: defaultFilter },
       });
+    }
+
+    case AuthTypes.LOGOUT: {
+      return initialState;
     }
 
     default: {

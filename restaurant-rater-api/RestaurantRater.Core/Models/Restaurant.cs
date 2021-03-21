@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace RestaurantRater.Core.Models
 {
@@ -12,10 +14,19 @@ namespace RestaurantRater.Core.Models
         public string Description { get; set; }
         
         [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        
+        [Required]
         public int CreatedById { get; set; }
         public User CreatedBy { get; set; }
         
         public List<RestaurantImage> RestaurantImages { get; set; }
         public List<Review> Reviews { get; set; }
+
+        public double AverageRating()
+        {
+            return Math.Round(Reviews.Select(review => review.Rating).DefaultIfEmpty().Average(), 2);
+        }
     }
 }

@@ -31,9 +31,9 @@ namespace RestaurantRater.Services
             return Convert.ToBase64String(randomNumber);
         }
 
-        public string GenerateToken(int id)
+        public string GenerateToken(string email)
         {
-            var claims = new[] {new Claim("Id", id.ToString())};
+            var claims = new[] {new Claim(ClaimTypes.Email, email)};
             var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
             var credentials = new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
 

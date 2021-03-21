@@ -1,5 +1,6 @@
 import update from 'immutability-helper';
 import { ReviewsTypes } from 'features/reviews/types';
+import { AuthTypes } from 'features/auth/types';
 
 const initialState = {
   reviews: [],
@@ -38,6 +39,7 @@ export default (state = initialState, { type, payload }) => {
       });
     }
 
+    case AuthTypes.LOGOUT:
     case ReviewsTypes.GET_REVIEWS_ERROR:
     case ReviewsTypes.REFRESH_REVIEWS_ERROR: {
       return initialState;

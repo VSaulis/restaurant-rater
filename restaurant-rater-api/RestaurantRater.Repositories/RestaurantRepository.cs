@@ -13,6 +13,26 @@ namespace RestaurantRater.Repositories
         {
         }
 
+        protected override IQueryable<Restaurant> ApplyFilter(IQueryable<Restaurant> query, RestaurantsFilter filter)
+        {
+            if (filter.CreatedById.HasValue)
+            {
+                query = query.Where(restaurant => restaurant.CreatedById == filter.CreatedById);
+            }
+            
+            if (filter.LowestRating.HasValue)
+            {
+                query = query.Where(restaurant => restaurant.AverageRating() >= filter.LowestRating.Value);
+            }
+            
+            if (filter.HighestRating.HasValue)
+            {
+                query = query.Where(restaurant => restaurant.AverageRating() <= filter.HighestRating.Value);
+            }
+
+            return query;
+        }
+
         protected override IQueryable<Restaurant> FormatQuery(IQueryable<Restaurant> query)
         {
             return query

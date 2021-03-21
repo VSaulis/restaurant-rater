@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using RestaurantRater.Core.Repositories;
@@ -24,10 +25,10 @@ namespace RestaurantRater.Middlewares
         {
             if (!httpContext.User.Identity.IsAuthenticated) return;
             
-            var id = httpContext.User.Claims.FirstOrDefault(claim => claim.Type == "Id")?.Value;
-            if (id == null) return;
+            var email = httpContext.User.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.Email)?.Value;
+            if (email == null) return;
             
-            var user = await userRepository.GetByIdAsync(int.Parse(id));
+            var user = await userRepository.GetByEmailAsync(email);
             if (user == null) return;
             
             httpContext.Items.Add("User", user);

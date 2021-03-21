@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 function App() {
   const [loaded] = useFonts({
@@ -29,7 +30,9 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={<Text>Loading</Text>} persistor={persistor}>
         <StatusBar />
-        <RootNavigator />
+        <BottomSheetModalProvider>
+          <RootNavigator />
+        </BottomSheetModalProvider>
         <FlashMessage position="top" />
       </PersistGate>
     </Provider>

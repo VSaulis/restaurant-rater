@@ -32,9 +32,9 @@ export default (state = initialState, { type, payload }) => {
       });
     }
 
-    case AuthTypes.LOGOUT:
     case AuthTypes.REGISTER_ERROR:
-    case AuthTypes.LOGIN_ERROR: {
+    case AuthTypes.LOGIN_ERROR:
+    case AuthTypes.LOGOUT: {
       return initialState;
     }
 
