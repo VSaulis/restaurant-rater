@@ -1,30 +1,16 @@
 import styled from 'styled-components/native';
-import { Colors, Sizes } from 'shared/styles';
+import { Sizes } from 'shared/styles';
 
 export const Container = styled.TouchableOpacity`
-  position: relative;
-  background-color: ${Colors.WHITE};
-  border-radius: 4px;
-  overflow: hidden;
-`;
-
-export const Image = styled.ImageBackground`
-  height: 185px;
-  width: 100%;
-  resize-mode: cover;
-  padding: ${Sizes.PADDING}px;
-`;
-
-export const Details = styled.View`
-  padding: ${Sizes.PADDING}px;
+  padding-vertical: ${Sizes.S}px;
   flex-direction: row;
-`;
-
-export const RightSide = styled.View`
-  flex: 1;
+  align-items: center;
 `;
 
 export const LeftSide = styled.View`
-  padding-top: 3px;
+  flex: 1;
+`;
+
+export const RightSide = styled.View`
   align-items: flex-end;
 `;

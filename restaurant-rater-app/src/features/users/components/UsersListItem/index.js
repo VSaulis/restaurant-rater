@@ -13,10 +13,10 @@ const UsersListItem = (props) => {
   return (
     <Styles.Container disabled={disabled} onPress={onPress} style={style}>
       <Avatar style={Spacings.RIGHT_SPACING.S} initials={initials} />
-      <Styles.Details>
+      <Styles.LeftSide>
         <Typography.Title>{`${user.firstName} ${user.lastName}`}</Typography.Title>
         <Typography.Caption>{user.created}</Typography.Caption>
-      </Styles.Details>
+      </Styles.LeftSide>
       <Badge label={user.role} />
     </Styles.Container>
   );

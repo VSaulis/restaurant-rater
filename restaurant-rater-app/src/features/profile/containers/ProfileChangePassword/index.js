@@ -3,7 +3,7 @@ import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
 import { useChangePassword } from 'features/profile/hooks';
 import { Button, Input } from 'shared/components';
-import { Spacings, Typography } from 'shared/styles';
+import { Spacings, Typography, Containers } from 'shared/styles';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
 import { Schemas } from 'features/profile/utils';
@@ -57,13 +57,13 @@ const ProfileChangePassword = (props) => {
           )}
         />
       </Styles.Content>
-      <Styles.Footer>
+      <Containers.Footer>
         <Button
           label="Change password"
           loading={isUpdating}
           onPress={handleSubmit(changePassword)}
         />
-      </Styles.Footer>
+      </Containers.Footer>
     </Styles.Container>
   );
 };

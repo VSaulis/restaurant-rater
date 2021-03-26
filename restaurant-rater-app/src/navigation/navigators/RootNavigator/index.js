@@ -11,7 +11,7 @@ import { NavigationService } from 'shared/services';
 
 const RootStack = createStackNavigator();
 
-const OPTIONS = {
+const screenOptions = {
   headerShown: false,
 };
 
@@ -21,7 +21,7 @@ function RootNavigator() {
 
   return (
     <NavigationContainer ref={NavigationService.navigationRef}>
-      <RootStack.Navigator screenOptions={OPTIONS}>
+      <RootStack.Navigator screenOptions={screenOptions}>
         {!isWalkthroughCompleted && !isLogged && (
           <RootStack.Screen name={Screens.WALKTHROUGH} component={WalkthroughScreen} />
         )}

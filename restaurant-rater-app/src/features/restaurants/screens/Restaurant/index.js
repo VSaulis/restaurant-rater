@@ -1,14 +1,15 @@
 import React from 'react';
 import { Restaurant } from 'features/restaurants/containers';
-import { FullScreenContainer } from 'shared/components';
+import { PrimaryHeader, ScreenContainer } from 'shared/components';
 
 const RestaurantScreen = (props) => {
   const { route } = props;
 
   return (
-    <FullScreenContainer>
+    <ScreenContainer>
+      <PrimaryHeader title={route.params.title} />
       <Restaurant id={route.params.id} />
-    </FullScreenContainer>
+    </ScreenContainer>
   );
 };
 

@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import * as Styles from './styles';
-import { ListSeparator } from 'shared/components';
-import { Spacings, Typography } from 'shared/styles';
+import { ListSeparator, SearchInput } from 'shared/components';
+import { Spacings, Containers } from 'shared/styles';
 import { UsersListItem } from 'features/users/components';
 import { useUsers } from 'features/users/hooks';
 import UserActions from 'features/users/containers/UserActions';
 
-const Users = (props) => {
-  const { style } = props;
+const Users = () => {
   const [selectedUser, setSelectedUser] = useState(null);
-  const { isRefreshing, isLoading, refresh, users, loadMore, count } = useUsers();
+  const { isRefreshing, isLoading, refresh, users, loadMore } = useUsers();
 
-  const handleUserSelect = (user) => {
-    setSelectedUser(user);
-  };
+  const renderItem = ({ item }) => (
+    <UsersListItem onPress={() => setSelectedUser(item)} user={item} />
+  );
 
   return (
-    <Styles.Container style={style}>
-      <Styles.Header>
-        <Typography.Heading>Users</Typography.Heading>
-        <Typography.Caption>{`${count} results found`}</Typography.Caption>
-      </Styles.Header>
-      <Styles.List
-        contentContainerStyle={Spacings.FULL_PADDING}
+    <Containers.FilledContainer>
+      <Containers.Header>
+        <SearchInput />
+      </Containers.Header>
+      <Containers.FlatList
+        contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}
         ItemSeparatorComponent={ListSeparator}
         refreshing={isRefreshing || isLoading}
         onRefresh={refresh}
@@ -30,12 +27,10 @@ const Users = (props) => {
         onEndReached={loadMore}
         onEndReachedThreshold={0}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <UsersListItem onPress={() => handleUserSelect(item)} user={item} />
-        )}
+        renderItem={renderItem}
       />
       <UserActions selectedUser={selectedUser} onClose={() => setSelectedUser(null)} />
-    </Styles.Container>
+    </Containers.FilledContainer>
   );
 };
 

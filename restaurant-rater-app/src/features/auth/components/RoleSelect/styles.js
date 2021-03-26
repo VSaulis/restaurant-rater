@@ -19,7 +19,8 @@ export const RoleContainer = styled.TouchableOpacity`
   width: 30%;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${(props) => (props.selected ? Colors.NEW_PRIMARY : Colors.NEW_LIGHT_GREY)};
+  border: 1px solid
+    ${(props) => (props.selected ? Colors.NEW_PRIMARY : Colors.NEW_LIGHT_GREY)};
 `;
 
 export const Error = styled(Typography.Error)`

@@ -9,15 +9,7 @@
             public const string Edit = "Permissions.Restaurants.Edit";
             public const string Delete = "Permissions.Restaurants.Delete";
         }
-        
-        public static class Categories
-        {
-            public const string Create = "Permissions.Categories.Create";
-            public const string View = "Permissions.Categories.View";
-            public const string Edit = "Permissions.Categories.Edit";
-            public const string Delete = "Permissions.Categories.Delete";
-        }
-        
+
         public static class Reviews
         {
             public const string Create = "Permissions.Reviews.Create";

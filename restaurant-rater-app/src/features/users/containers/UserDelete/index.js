@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styles from './styles';
-import { Spacings, Typography } from 'shared/styles';
+import { Spacings, Typography, Containers } from 'shared/styles';
 import { useUserDelete } from 'features/users/hooks';
 import PropTypes from 'prop-types';
 import { Button } from 'shared/components';
@@ -19,9 +19,9 @@ const UserDelete = (props) => {
           Are you sure that you want to delete this user?
         </Typography.Paragraph>
       </Styles.Content>
-      <Styles.Footer>
+      <Containers.Footer>
         <Button onPress={deleteUser} loading={isDeleting} label="Delete user" />
-      </Styles.Footer>
+      </Containers.Footer>
     </Styles.Container>
   );
 };

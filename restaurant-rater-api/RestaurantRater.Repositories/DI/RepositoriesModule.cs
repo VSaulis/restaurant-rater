@@ -17,7 +17,6 @@ namespace RestaurantRater.Repositories.DI
             services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IReplyRepository, ReplyRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
     }
 }

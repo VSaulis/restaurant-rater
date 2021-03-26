@@ -63,6 +63,7 @@ export const Title = styled(MediumText)`
 
 export const Paragraph = styled(RegularText)`
   font-size: 14px;
+  color: ${Colors.TEXT_SECONDARY};
 `;
 
 export const Link = styled(RegularText)`

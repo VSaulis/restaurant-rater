@@ -3,42 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestaurantRater.Repositories.Context;
 
 namespace RestaurantRater.Repositories.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20210324143314_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
-
-            modelBuilder.Entity("RestaurantRater.Core.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Reply", b =>
                 {
@@ -80,9 +61,6 @@ namespace RestaurantRater.Repositories.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -101,8 +79,6 @@ namespace RestaurantRater.Repositories.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("CreatedById");
 
@@ -243,19 +219,11 @@ namespace RestaurantRater.Repositories.Migrations
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Restaurant", b =>
                 {
-                    b.HasOne("RestaurantRater.Core.Models.Category", "Category")
-                        .WithMany("Restaurants")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("RestaurantRater.Core.Models.User", "CreatedBy")
                         .WithMany("Restaurants")
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("CreatedBy");
                 });
@@ -288,11 +256,6 @@ namespace RestaurantRater.Repositories.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("Restaurant");
-                });
-
-            modelBuilder.Entity("RestaurantRater.Core.Models.Category", b =>
-                {
-                    b.Navigation("Restaurants");
                 });
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Restaurant", b =>

@@ -12,7 +12,7 @@ export const getRestaurant = async (id) => {
 };
 
 export const addRestaurant = async (request) => {
-  return httpClient.post(baseUrl, { ...request, categoryId: 1 });
+  return httpClient.post(baseUrl, { ...request });
 };
 
 export const editRestaurant = async (id, request) => {

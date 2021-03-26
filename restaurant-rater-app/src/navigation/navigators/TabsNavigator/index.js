@@ -2,32 +2,83 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Permissions, Screens } from 'shared/constant';
 import { RestaurantsScreen } from 'features/restaurants/screens';
-import { usePermissions } from 'features/auth/hooks';
+import { usePermissions, useRole } from 'features/auth/hooks';
 import { UsersScreen } from 'features/users/screens';
-import { CategoriesScreen } from 'features/categories/screens';
 import { ProfileScreen } from 'features/profile/screens';
 import { ReviewsScreen } from 'features/reviews/screens';
+import { Colors, Icons } from 'shared/styles';
+import { Icon, PrimaryHeader } from 'shared/components';
 
 const Tabs = createBottomTabNavigator();
 
-const OPTIONS = {
-  headerShown: false,
+const tabBarOptions = {
+  activeTintColor: Colors.NEW_PRIMARY,
+  inactiveTintColor: Colors.NEW_GREY,
+  labelStyle: {
+    fontFamily: 'Regular',
+    fontSize: 10,
+  },
+  style: {
+    height: 55,
+    elevation: 0,
+    boxShadow: 'none',
+    borderTopWidth: 1,
+    borderTopColor: Colors.LIGHT_GREY_1,
+  },
+};
+
+const restaurantOptions = {
+  title: 'Restaurants',
+  tabBarIcon: ({ color, size }) => <Icon color={color} size={size} name={Icons.COFFEE} />,
+};
+
+const reviewsOptions = {
+  title: 'Reviews',
+  tabBarIcon: ({ color, size }) => <Icon color={color} size={size} name={Icons.STAR} />,
+};
+
+const usersOptions = {
+  title: 'Users',
+  tabBarIcon: ({ color, size }) => <Icon color={color} size={size} name={Icons.USERS} />,
+};
+
+const profileOptions = {
+  title: 'Profile',
+  tabBarIcon: ({ color, size }) => <Icon color={color} size={size} name={Icons.USER} />,
 };
 
 function TabsNavigator() {
   const { hasPermission } = usePermissions();
-  const usersAccess = hasPermission(Permissions.Users.View);
-  const categoriesAccess = hasPermission(Permissions.Categories.View);
+  const { isRegularUser } = useRole();
 
   return (
-    <Tabs.Navigator screenOptions={OPTIONS}>
-      <Tabs.Screen name={Screens.RESTAURANTS} component={RestaurantsScreen} />
-      <Tabs.Screen name={Screens.REVIEWS} component={ReviewsScreen} />
-      {usersAccess && <Tabs.Screen name={Screens.USERS} component={UsersScreen} />}
-      {categoriesAccess && (
-        <Tabs.Screen name={Screens.CATEGORIES} component={CategoriesScreen} />
+    <Tabs.Navigator tabBarOptions={tabBarOptions}>
+      {hasPermission(Permissions.Restaurants.View) && (
+        <Tabs.Screen
+          options={restaurantOptions}
+          name={Screens.RESTAURANTS}
+          component={RestaurantsScreen}
+        />
       )}
-      <Tabs.Screen name={Screens.PROFILE} component={ProfileScreen} />
+      {!isRegularUser && (
+        <Tabs.Screen
+          options={reviewsOptions}
+          name={Screens.REVIEWS}
+          component={ReviewsScreen}
+        />
+      )}
+      {hasPermission(Permissions.Users.View) && (
+        <Tabs.Screen
+          options={usersOptions}
+          name={Screens.USERS}
+          component={UsersScreen}
+        />
+      )}
+      <Tabs.Screen
+        options={profileOptions}
+        name={Screens.PROFILE}
+        component={ProfileScreen}
+      />
     </Tabs.Navigator>
   );
 }

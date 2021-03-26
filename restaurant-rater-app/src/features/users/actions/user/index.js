@@ -47,7 +47,7 @@ export function deleteUser(id) {
       dispatch({ type: UserTypes.DELETE_USER_START });
       await UsersClient.deleteUser(id);
       dispatch({ type: UserTypes.DELETE_USER, payload: { id } });
-      FlashMessageService.showSuccess('Category is successfully deleted');
+      FlashMessageService.showSuccess('User is successfully deleted');
       NavigationService.goBack();
     } catch (exception) {
       dispatch({ type: UserTypes.DELETE_USER_ERROR });

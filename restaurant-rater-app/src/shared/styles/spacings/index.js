@@ -10,6 +10,7 @@ export const BOTTOM_SPACING = {
   M: { marginBottom: Sizes.M },
   S: { marginBottom: Sizes.S },
   XS: { marginBottom: Sizes.XS },
+  XXS: { marginBottom: Sizes.XXS },
 };
 
 export const RIGHT_SPACING = {

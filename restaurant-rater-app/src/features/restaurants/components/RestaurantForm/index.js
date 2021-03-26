@@ -1,59 +1,70 @@
-import React, { useEffect, useState } from 'react';
-import * as Styles from './styles';
+import React from 'react';
 import { Button, Input } from 'shared/components';
-import { Spacings } from 'shared/styles';
-import { ViewPropTypes } from 'react-native';
+import { Spacings, Containers } from 'shared/styles';
+import { Controller, useForm } from 'react-hook-form';
+import { RestaurantPropTypes, Schemas } from 'features/restaurants/utils';
+import { yupResolver } from '@hookform/resolvers/yup';
 import PropTypes from 'prop-types';
-import { RestaurantPropTypes } from 'features/restaurants/utils';
 
 const RestaurantForm = (props) => {
-  const { style, formData, isLoading, onSubmit } = props;
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
-  useEffect(() => {
-    if (formData) {
-      setTitle(formData.title);
-      setDescription(formData.description);
-    }
-  }, [formData]);
-
-  const handleSubmit = () => {
-    onSubmit({ title, description });
-  };
+  const { isLoading, onSubmit, formData } = props;
+  const { control, handleSubmit, errors } = useForm({
+    resolver: yupResolver(Schemas.restaurantSchema),
+  });
 
   return (
-    <Styles.Container style={style}>
-      <Styles.Content>
-        <Input
-          style={Spacings.BOTTOM_SPACING.L}
-          label="Title"
-          onChange={({ value }) => setTitle(value)}
-          value={title}
-          placeholder="Enter restaurant name"
+    <Containers.FilledContainer>
+      <Containers.ScrollView contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}>
+        <Controller
+          as={undefined}
+          defaultValue={formData ? formData.title : ''}
+          control={control}
+          name="title"
+          render={({ onChange, onBlur, value }) => (
+            <Input
+              error={errors.title}
+              onBlur={onBlur}
+              style={Spacings.BOTTOM_SPACING.L}
+              label="Title"
+              onChange={(event) => onChange(event.value)}
+              value={value}
+              placeholder="Enter restaurant title"
+            />
+          )}
         />
-        <Input
-          style={Spacings.BOTTOM_SPACING.L}
-          label="Description"
-          onChange={({ value }) => setDescription(value)}
-          value={description}
-          placeholder="Enter restaurant description"
+        <Controller
+          as={undefined}
+          defaultValue={formData ? formData.description : ''}
+          control={control}
+          name="description"
+          render={({ onChange, onBlur, value }) => (
+            <Input
+              error={errors.description}
+              onBlur={onBlur}
+              style={Spacings.BOTTOM_SPACING.L}
+              label="Description"
+              onChange={(event) => onChange(event.value)}
+              value={value}
+              placeholder="Enter restaurant description"
+            />
+          )}
         />
-      </Styles.Content>
-      <Button onPress={handleSubmit} disabled={isLoading} label="Update" />
-    </Styles.Container>
+      </Containers.ScrollView>
+      <Containers.Footer>
+        <Button label="Save" loading={isLoading} onPress={handleSubmit(onSubmit)} />
+      </Containers.Footer>
+    </Containers.FilledContainer>
   );
 };
 
 RestaurantForm.propTypes = {
-  style: ViewPropTypes.style,
-  isLoading: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
   formData: RestaurantPropTypes.RestaurantFormData,
 };
 
 RestaurantForm.defaultProps = {
-  style: null,
+  formData: null,
   isLoading: false,
 };
 

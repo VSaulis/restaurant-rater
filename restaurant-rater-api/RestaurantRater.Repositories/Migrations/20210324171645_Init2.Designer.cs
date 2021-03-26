@@ -10,8 +10,8 @@ using RestaurantRater.Repositories.Context;
 namespace RestaurantRater.Repositories.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20210320230005_Init")]
-    partial class Init
+    [Migration("20210324171645_Init2")]
+    partial class Init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,27 +20,6 @@ namespace RestaurantRater.Repositories.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
-
-            modelBuilder.Entity("RestaurantRater.Core.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Reply", b =>
                 {
@@ -82,9 +61,6 @@ namespace RestaurantRater.Repositories.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
@@ -104,41 +80,9 @@ namespace RestaurantRater.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("CreatedById");
 
                     b.ToTable("Restaurants");
-                });
-
-            modelBuilder.Entity("RestaurantRater.Core.Models.RestaurantImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RestaurantId")
-                        .HasColumnType("int");
-
-                    b.Property<long>("Size")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("Updated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RestaurantId");
-
-                    b.ToTable("RestaurantImages");
                 });
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Review", b =>
@@ -245,32 +189,13 @@ namespace RestaurantRater.Repositories.Migrations
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Restaurant", b =>
                 {
-                    b.HasOne("RestaurantRater.Core.Models.Category", "Category")
-                        .WithMany("Restaurants")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("RestaurantRater.Core.Models.User", "CreatedBy")
                         .WithMany("Restaurants")
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
-
                     b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("RestaurantRater.Core.Models.RestaurantImage", b =>
-                {
-                    b.HasOne("RestaurantRater.Core.Models.Restaurant", "Restaurant")
-                        .WithMany("RestaurantImages")
-                        .HasForeignKey("RestaurantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Restaurant");
                 });
 
             modelBuilder.Entity("RestaurantRater.Core.Models.Review", b =>
@@ -292,15 +217,8 @@ namespace RestaurantRater.Repositories.Migrations
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("RestaurantRater.Core.Models.Category", b =>
-                {
-                    b.Navigation("Restaurants");
-                });
-
             modelBuilder.Entity("RestaurantRater.Core.Models.Restaurant", b =>
                 {
-                    b.Navigation("RestaurantImages");
-
                     b.Navigation("Reviews");
                 });
 

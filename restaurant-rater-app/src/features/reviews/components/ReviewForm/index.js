@@ -1,25 +1,20 @@
 import React from 'react';
-import * as Styles from './styles';
-import { ViewPropTypes } from 'react-native';
 import { Button, Input, Rating } from 'shared/components';
-import { Spacings, Typography } from 'shared/styles';
+import { Spacings, Containers } from 'shared/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { ReviewPropTypes, Schemas } from 'features/reviews/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 import PropTypes from 'prop-types';
 
 const ReviewForm = (props) => {
-  const { style, isLoading, title, onSubmit, formData } = props;
+  const { isLoading, onSubmit, formData } = props;
   const { control, handleSubmit, errors } = useForm({
     resolver: yupResolver(Schemas.reviewSchema),
   });
 
   return (
-    <Styles.Container style={style}>
-      <Styles.Content contentContainerStyle={Spacings.FULL_PADDING}>
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.L}>
-          {title}
-        </Typography.Heading1>
+    <Containers.FilledContainer>
+      <Containers.ScrollView contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}>
         <Controller
           as={undefined}
           defaultValue={formData ? formData.rating : 0}
@@ -72,24 +67,21 @@ const ReviewForm = (props) => {
             />
           )}
         />
-      </Styles.Content>
-      <Styles.Footer>
-        <Button label={title} loading={isLoading} onPress={handleSubmit(onSubmit)} />
-      </Styles.Footer>
-    </Styles.Container>
+      </Containers.ScrollView>
+      <Containers.Footer>
+        <Button label="Save" loading={isLoading} onPress={handleSubmit(onSubmit)} />
+      </Containers.Footer>
+    </Containers.FilledContainer>
   );
 };
 
 ReviewForm.propTypes = {
-  style: ViewPropTypes.style,
-  title: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
   formData: ReviewPropTypes.ReviewFormData,
 };
 
 ReviewForm.defaultProps = {
-  style: {},
   formData: null,
   isLoading: false,
 };

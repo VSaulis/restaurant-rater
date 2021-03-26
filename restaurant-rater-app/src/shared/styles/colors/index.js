@@ -18,6 +18,7 @@ export const LIGHT_BLUE = '#ACCBEC';
 export const PLACEHOLDER = '#CCCCCC';
 export const BACKGROUND = '#F5F5F5';
 
+export const NEW_LIGHT_GREY_1 = '#F5F5F5';
 export const NEW_LIGHT_GREY = '#CCCCCC';
 export const NEW_GREY = '#868686';
 export const NEW_PRIMARY = '#22A45D';

@@ -1,5 +1,6 @@
 export const PADDING = 20;
 
+export const XXS = 2;
 export const XS = 5;
 export const S = 10;
 export const M = 15;

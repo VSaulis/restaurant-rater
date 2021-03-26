@@ -9,7 +9,7 @@ const ReviewEdit = (props) => {
   const { editReview, isUpdating, review, isLoading } = useReviewEdit({ id });
 
   if (!review || isLoading) {
-    return <Styles.Container/>
+    return <Styles.Container />;
   }
 
   return (

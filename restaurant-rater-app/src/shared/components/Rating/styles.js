@@ -17,5 +17,5 @@ export const Error = styled(Typography.Error)`
 export const Label = styled(Typography.Label)`
   text-transform: uppercase;
   color: ${Colors.NEW_GREY};
-  margin-bottom: ${Sizes.XS}px;
+  margin-bottom: ${Sizes.S}px;
 `;

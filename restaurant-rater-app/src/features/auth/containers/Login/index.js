@@ -1,25 +1,26 @@
 import React from 'react';
-import * as Styles from './styles';
-import { ViewPropTypes } from 'react-native';
 import { useLogin } from 'features/auth/hooks';
 import { Button, Input } from 'shared/components';
-import { Colors, Spacings, Typography } from 'shared/styles';
+import { Colors, Spacings, Typography, Containers } from 'shared/styles';
 import { useNavigation } from '@react-navigation/native';
 import { Screens } from 'shared/constant';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
 import { Schemas } from 'features/auth/utils';
 
-const Login = (props) => {
-  const { style } = props;
+const Login = () => {
   const navigation = useNavigation();
   const { login, isLoading } = useLogin();
-  const { control, handleSubmit, errors } = useForm({ resolver: yupResolver(Schemas.loginSchema) });
+  const { control, handleSubmit, errors } = useForm({
+    resolver: yupResolver(Schemas.loginSchema),
+  });
 
   return (
-    <Styles.Container style={style}>
-      <Styles.Content contentContainerStyle={Spacings.FULL_PADDING}>
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.M}>Welcome Back</Typography.Heading1>
+    <Containers.FilledContainer>
+      <Containers.ScrollView contentContainerStyle={Spacings.FULL_PADDING}>
+        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.M}>
+          Welcome Back
+        </Typography.Heading1>
         <Typography.Paragraph color={Colors.NEW_GREY} style={Spacings.BOTTOM_SPACING.L}>
           Enter your Email for sign in. Enjoy your food :)
         </Typography.Paragraph>
@@ -57,8 +58,8 @@ const Login = (props) => {
             />
           )}
         />
-      </Styles.Content>
-      <Styles.Footer>
+      </Containers.ScrollView>
+      <Containers.Footer>
         <Button
           style={Spacings.BOTTOM_SPACING.L}
           label="Sign in"
@@ -73,17 +74,9 @@ const Login = (props) => {
           {`Do not have account? `}
           <Typography.Link>Sign up</Typography.Link>
         </Typography.Paragraph>
-      </Styles.Footer>
-    </Styles.Container>
+      </Containers.Footer>
+    </Containers.FilledContainer>
   );
-};
-
-Login.propTypes = {
-  style: ViewPropTypes.style,
-};
-
-Login.defaultProps = {
-  style: {},
 };
 
 export default Login;

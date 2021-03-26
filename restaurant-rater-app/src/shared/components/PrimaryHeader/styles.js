@@ -1,15 +1,13 @@
 import styled from 'styled-components/native';
-import { Colors, Sizes } from 'shared/styles';
-import { Platform, StatusBar } from 'react-native';
+import { Sizes, Typography } from 'shared/styles';
 
-export const Container = styled.View`
-  background-color: ${Colors.WHITE};
+export const Title = styled(Typography.Heading)`
+  flex: 1;
+  padding-right: ${Sizes.PADDING}px;
 `;
 
-export const SafeArea = styled.SafeAreaView``;
-
-export const Content = styled.View`
-  padding: ${Sizes.L}px ${Sizes.S}px ${Sizes.S}px ${Sizes.S}px;
-  align-items: center;
-  margin-top: ${Platform.OS === 'android' ? StatusBar.currentHeight : 0}px;
+export const Container = styled.View`
+  padding-horizontal: ${Sizes.PADDING}px;
+  padding-vertical: ${Sizes.PADDING}px;
+  padding-bottom: ${Sizes.S}px;
 `;

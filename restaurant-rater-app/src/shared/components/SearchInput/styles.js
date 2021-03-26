@@ -3,14 +3,14 @@ import { Colors, Sizes } from 'shared/styles';
 
 export const Container = styled.View`
   width: 100%;
-  height: 40px;
+  height: 45px;
 `;
 
 export const Input = styled.TextInput`
   color: ${Colors.TEXT_PRIMARY};
   font-size: 13px;
   border-radius: 5px;
-  background-color: ${Colors.LIGHT_GREY};
+  background-color: ${Colors.LIGHT_GREY_1};
   padding-right: ${Sizes.PADDING}px;
   padding-left: 40px;
   flex: 1;

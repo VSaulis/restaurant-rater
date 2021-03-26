@@ -4,7 +4,10 @@ export const HorizontalSliderItemType = PropTypes.shape({
   id: PropTypes.number.isRequired,
 });
 
-export const NumberOrStringType = PropTypes.oneOfType([PropTypes.string, PropTypes.number]);
+export const NumberOrStringType = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.number,
+]);
 
 export const BaseModelType = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -26,4 +29,9 @@ export const BottomSheetOptionType = PropTypes.shape({
 export const ErrorType = PropTypes.shape({
   message: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+});
+
+export const HeaderActionType = PropTypes.shape({
+  icon: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 });

@@ -16,7 +16,6 @@ namespace RestaurantRater.Repositories.Context
             OnUserModelCreating(modelBuilder);
             OnRestaurantModelCreating(modelBuilder);
             OnReviewModelCreating(modelBuilder);
-            OnRestaurantImageModelCreating(modelBuilder);
         }
 
         private static void OnUserModelCreating(ModelBuilder modelBuilder)
@@ -25,7 +24,7 @@ namespace RestaurantRater.Repositories.Context
                 .Entity<User>()
                 .Property(user => user.Status)
                 .HasConversion(new EnumToStringConverter<UserStatuses>());
-            
+
             modelBuilder
                 .Entity<User>()
                 .Property(user => user.Role)
@@ -38,21 +37,8 @@ namespace RestaurantRater.Repositories.Context
                 .HasOne(restaurant => restaurant.CreatedBy)
                 .WithMany(user => user.Restaurants)
                 .HasForeignKey(restaurant => restaurant.CreatedById);
-            
-            modelBuilder.Entity<Restaurant>()
-                .HasOne(restaurant => restaurant.Category)
-                .WithMany(category => category.Restaurants)
-                .HasForeignKey(restaurant => restaurant.CategoryId);
         }
-        
-        private static void OnRestaurantImageModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<RestaurantImage>()
-                .HasOne(restaurantImage => restaurantImage.Restaurant)
-                .WithMany(restaurant => restaurant.RestaurantImages)
-                .HasForeignKey(restaurantImage => restaurantImage.RestaurantId);
-        }
-        
+
         private static void OnReviewModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Review>()
@@ -65,18 +51,16 @@ namespace RestaurantRater.Repositories.Context
                 .HasOne(review => review.Restaurant)
                 .WithMany(restaurant => restaurant.Reviews)
                 .HasForeignKey(review => review.RestaurantId);
-            
+
             modelBuilder.Entity<Review>()
                 .HasOne(review => review.Reply)
                 .WithOne(reply => reply.Review)
                 .HasForeignKey<Reply>(reply => reply.ReviewId);
         }
 
-        public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<RestaurantImage> RestaurantImages { get; set; }
         public DbSet<Reply> Replies { get; set; }
     }
 }

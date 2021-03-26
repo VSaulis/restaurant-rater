@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Styles from './styles';
 import { Button, Input } from 'shared/components';
-import { Spacings, Typography } from 'shared/styles';
+import { Spacings, Typography, Containers } from 'shared/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { Schemas } from 'features/profile/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -75,9 +75,9 @@ const ProfileEdit = () => {
           )}
         />
       </Styles.Content>
-      <Styles.Footer>
+      <Containers.Footer>
         <Button label="Update" loading={isUpdating} onPress={handleSubmit(editProfile)} />
-      </Styles.Footer>
+      </Containers.Footer>
     </Styles.Container>
   );
 };

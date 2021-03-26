@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { BaseModelType } from 'shared/utils/sharedPropTypes';
 
 export const ReviewsListItemType = PropTypes.shape({
-  ...BaseModelType,
+  id: PropTypes.number.isRequired,
+  created: PropTypes.string.isRequired,
+  updated: PropTypes.string,
   comment: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   visited: PropTypes.string.isRequired,

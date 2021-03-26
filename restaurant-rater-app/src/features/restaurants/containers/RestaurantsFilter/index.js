@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import update from 'immutability-helper';
-import * as Styles from './styles';
-import { Spacings, Typography } from 'shared/styles';
+import { Containers, Spacings } from 'shared/styles';
 import { Button, ExpandedSelect } from 'shared/components';
 import { useRestaurantsFilter } from 'features/restaurants/hooks';
 import useDeepCompareEffect from 'use-deep-compare-effect';
@@ -16,16 +15,7 @@ const RatingOptions = [
   { label: '5 star or above', value: 5 },
 ];
 
-const CategoriesOptions = [
-  { label: 'Fast food', value: 1 },
-  { label: 'Pizzas', value: 2 },
-  { label: 'Burgers', value: 3 },
-  { label: 'Chinese', value: 4 },
-  { label: 'Sushi', value: 5 },
-];
-
-const RestaurantsFilter = (props) => {
-  const { style } = props;
+const RestaurantsFilter = () => {
   const { filter, setFilter } = useRestaurantsFilter();
   const { goBack, canGoBack, reset } = useNavigation();
   const [localFilter, setLocalFilter] = useState(filter);
@@ -48,11 +38,8 @@ const RestaurantsFilter = (props) => {
   };
 
   return (
-    <Styles.Container style={style}>
-      <Styles.FixedContainer>
-        <Typography.Heading>Filter</Typography.Heading>
-      </Styles.FixedContainer>
-      <Styles.ScrollContainer contentContainerStyle={Spacings.FULL_PADDING}>
+    <Containers.FilledContainer>
+      <Containers.ScrollView contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}>
         <ExpandedSelect
           label="Rating"
           value={localFilter.ratings}
@@ -60,18 +47,11 @@ const RestaurantsFilter = (props) => {
           name="ratings"
           options={RatingOptions}
         />
-        <ExpandedSelect
-          label="Categories"
-          value={localFilter.categories}
-          onChange={handleChange}
-          name="categories"
-          options={CategoriesOptions}
-        />
-      </Styles.ScrollContainer>
-      <Styles.FixedContainer>
+      </Containers.ScrollView>
+      <Containers.Footer>
         <Button onPress={submit} label="Save" />
-      </Styles.FixedContainer>
-    </Styles.Container>
+      </Containers.Footer>
+    </Containers.FilledContainer>
   );
 };
 

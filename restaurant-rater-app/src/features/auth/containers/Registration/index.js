@@ -1,9 +1,7 @@
 import React from 'react';
-import * as Styles from './styles';
-import { ViewPropTypes } from 'react-native';
 import { useRegistration } from 'features/auth/hooks';
 import { Button, Input } from 'shared/components';
-import { Colors, Spacings, Typography } from 'shared/styles';
+import { Colors, Spacings, Typography, Containers } from 'shared/styles';
 import { useNavigation } from '@react-navigation/native';
 import { Roles, Screens } from 'shared/constant';
 import { RoleSelect } from 'features/auth/components';
@@ -11,16 +9,19 @@ import { Controller, useForm } from 'react-hook-form';
 import { Schemas } from 'features/auth/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const Registration = (props) => {
-  const { style } = props;
+const Registration = () => {
   const navigation = useNavigation();
-  const { control, handleSubmit, errors } = useForm({ resolver: yupResolver(Schemas.registrationSchema) });
+  const { control, handleSubmit, errors } = useForm({
+    resolver: yupResolver(Schemas.registrationSchema),
+  });
   const { register, isLoading } = useRegistration();
 
   return (
-    <Styles.Container style={style}>
-      <Styles.Content contentContainerStyle={Spacings.FULL_PADDING}>
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.M}>Create Account</Typography.Heading1>
+    <Containers.FilledContainer>
+      <Containers.ScrollView contentContainerStyle={Spacings.FULL_PADDING}>
+        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.M}>
+          Create Account
+        </Typography.Heading1>
         <Typography.Paragraph color={Colors.NEW_GREY} style={Spacings.BOTTOM_SPACING.L}>
           Enter your First name, Last name, Email and Password for registration.
         </Typography.Paragraph>
@@ -108,8 +109,8 @@ const Registration = (props) => {
             />
           )}
         />
-      </Styles.Content>
-      <Styles.Footer>
+      </Containers.ScrollView>
+      <Containers.Footer>
         <Button
           style={Spacings.BOTTOM_SPACING.L}
           label="Sign up"
@@ -124,17 +125,9 @@ const Registration = (props) => {
           {`Already have an account? `}
           <Typography.Link>Sign in</Typography.Link>
         </Typography.Paragraph>
-      </Styles.Footer>
-    </Styles.Container>
+      </Containers.Footer>
+    </Containers.FilledContainer>
   );
-};
-
-Registration.propTypes = {
-  style: ViewPropTypes.style,
-};
-
-Registration.defaultProps = {
-  style: {},
 };
 
 export default Registration;

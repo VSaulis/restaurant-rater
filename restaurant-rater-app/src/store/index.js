@@ -13,7 +13,6 @@ import {
 import { reviewReducer, reviewsReducer } from 'features/reviews/reducers';
 import { walkthroughReducer } from 'features/walkthrough/reducers';
 import { userReducer, usersReducer } from 'features/users/reducers';
-import { categoriesReducer, categoryReducer } from 'features/categories/reducers';
 
 const persistConfig = {
   key: 'root',
@@ -31,8 +30,6 @@ const rootReducer = combineReducers({
   review: reviewReducer,
   users: usersReducer,
   user: userReducer,
-  categories: categoriesReducer,
-  category: categoryReducer,
   walkthrough: walkthroughReducer,
 });
 

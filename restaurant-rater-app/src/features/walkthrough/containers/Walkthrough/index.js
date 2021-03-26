@@ -1,13 +1,11 @@
 import React, { useState, useRef } from 'react';
-import * as Styles from './styles';
-import { ViewPropTypes } from 'react-native';
+import { Containers } from 'shared/styles';
 import { Button, Slider } from 'shared/components';
 import { Slide } from 'features/walkthrough/components';
 import { Slides } from 'features/walkthrough/constants';
 import { useWalkthrough } from 'features/walkthrough/hooks';
 
-const Walkthrough = (props) => {
-  const { style } = props;
+const Walkthrough = () => {
   const ref = useRef(null);
   const { completeWalkthrough } = useWalkthrough();
   const [slideIndex, setSlideIndex] = useState(0);
@@ -23,29 +21,23 @@ const Walkthrough = (props) => {
   };
 
   return (
-    <Styles.Container style={style}>
-      <Styles.SliderContainer>
+    <Containers.FilledContainer>
+      <Containers.FilledContainer>
         <Slider
           ref={ref}
           onChange={setSlideIndex}
           currentSlideIndex={slideIndex}
           slides={Slides}
-          renderSlide={({ item }) => <Slide slide={item} />}
+          renderSlide={({ item }) => (
+            <Slide description={item.description} image={item.image} title={item.title} />
+          )}
         />
-      </Styles.SliderContainer>
-      <Styles.Footer>
+      </Containers.FilledContainer>
+      <Containers.Footer>
         <Button onPress={onButtonPress} label={isLastSlide ? 'Get started' : 'Next'} />
-      </Styles.Footer>
-    </Styles.Container>
+      </Containers.Footer>
+    </Containers.FilledContainer>
   );
-};
-
-Walkthrough.propTypes = {
-  style: ViewPropTypes.style,
-};
-
-Walkthrough.defaultProps = {
-  style: {},
 };
 
 export default Walkthrough;

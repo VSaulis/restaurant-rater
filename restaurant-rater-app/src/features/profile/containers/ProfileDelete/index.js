@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styles from './styles';
-import { Spacings, Typography } from 'shared/styles';
+import { Spacings, Typography, Containers } from 'shared/styles';
 import { useProfileDelete } from 'features/profile/hooks';
 import { Button } from 'shared/components';
 
@@ -17,9 +17,9 @@ const ProfileDelete = () => {
           Are you sure that you want to your profile?
         </Typography.Paragraph>
       </Styles.Content>
-      <Styles.Footer>
+      <Containers.Footer>
         <Button onPress={deleteProfile} loading={isDeleting} label="Delete profile" />
-      </Styles.Footer>
+      </Containers.Footer>
     </Styles.Container>
   );
 };

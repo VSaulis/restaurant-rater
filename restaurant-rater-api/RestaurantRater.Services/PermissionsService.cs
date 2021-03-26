@@ -19,11 +19,6 @@ namespace RestaurantRater.Services
                 permissions.Add(Permissions.Users.Edit);
                 permissions.Add(Permissions.Users.View);
                 permissions.Add(Permissions.Users.Delete);
-                // Categories
-                permissions.Add(Permissions.Categories.Create);
-                permissions.Add(Permissions.Categories.Edit);
-                permissions.Add(Permissions.Categories.View);
-                permissions.Add(Permissions.Categories.Delete);
                 // Reviews
                 permissions.Add(Permissions.Reviews.Edit);
                 permissions.Add(Permissions.Reviews.View);
@@ -61,11 +56,6 @@ namespace RestaurantRater.Services
                 permissions.Add(Permissions.Reviews.Edit);
                 permissions.Add(Permissions.Reviews.View);
                 permissions.Add(Permissions.Reviews.Delete);
-                // Categories
-                permissions.Add(Permissions.Categories.Create);
-                permissions.Add(Permissions.Categories.Edit);
-                permissions.Add(Permissions.Categories.View);
-                permissions.Add(Permissions.Categories.Delete);
                 // Restaurants
                 permissions.Add(Permissions.Restaurants.View);
                 // Replies

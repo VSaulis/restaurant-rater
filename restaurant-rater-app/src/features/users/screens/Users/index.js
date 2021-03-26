@@ -1,10 +1,11 @@
 import React from 'react';
 import { Users } from 'features/users/containers';
-import { ScreenContainer } from 'shared/components';
+import { PrimaryHeader, ScreenContainer } from 'shared/components';
 
 const UsersScreen = () => {
   return (
     <ScreenContainer>
+      <PrimaryHeader title="Users" />
       <Users />
     </ScreenContainer>
   );

@@ -61,7 +61,7 @@ namespace RestaurantRater.Services
             var loggedUser = (User) _httpContext.Items.GetOrDefault("User");
             var userReview = await _reviewRepository.GetRestaurantUserReviewAsync(loggedUser.Id, id);
             var userReviewDto = _mapper.Map<Review, ReviewsListItemDto>(userReview);
-            restaurantDto.UserReview = userReviewDto;
+            restaurantDto.IsReviewed = userReviewDto != null;
             
             return new ResultResponse<RestaurantDto>(restaurantDto);
         }

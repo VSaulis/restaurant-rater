@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
 import { Colors, Spacings, Typography } from 'shared/styles';
-import { WalkthroughPropTypes } from 'features/walkthrough/utils';
+import PropTypes from 'prop-types';
 
 const Slide = (props) => {
   const { style, slide } = props;
@@ -26,7 +26,9 @@ const Slide = (props) => {
 
 Slide.propTypes = {
   style: ViewPropTypes.style,
-  slide: WalkthroughPropTypes.SlideType.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.number.isRequired,
 };
 
 Slide.defaultProps = {
