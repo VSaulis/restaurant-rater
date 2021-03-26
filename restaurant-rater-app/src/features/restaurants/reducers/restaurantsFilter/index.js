@@ -3,7 +3,7 @@ import { RestaurantsFilterTypes } from 'features/restaurants/types';
 import { AuthTypes } from 'features/auth/types';
 
 const defaultFilter = {
-  ratings: [],
+  lowestRating: null,
 };
 
 const initialState = {

@@ -13,8 +13,10 @@ const Checkbox = (props) => {
 
   return (
     <Styles.Container onPress={handleChange} style={style}>
-      <Styles.CheckContainer checked={checked} />
-      <Typography.Title>{label}</Typography.Title>
+      <Styles.CheckContainer checked={checked}>
+        {checked && <Styles.Check />}
+      </Styles.CheckContainer>
+      <Typography.RegularText>{label}</Typography.RegularText>
     </Styles.Container>
   );
 };

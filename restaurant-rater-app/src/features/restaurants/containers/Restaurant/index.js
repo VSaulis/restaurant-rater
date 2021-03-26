@@ -5,6 +5,7 @@ import { usePermissions } from 'features/auth/hooks';
 import { Permissions, Screens } from 'shared/constant';
 import { Button, Rating } from 'shared/components';
 import { useNavigation } from '@react-navigation/native';
+import { ReviewsListItem } from 'features/reviews/components';
 
 const Restaurant = (props) => {
   const { id } = props;
@@ -21,6 +22,9 @@ const Restaurant = (props) => {
 
   return (
     <Containers.ScrollView style={Spacings.HORIZONTAL_PADDING.L}>
+      <Typography.Heading style={Spacings.BOTTOM_SPACING.S}>
+        {restaurant.title}
+      </Typography.Heading>
       <Rating
         style={Spacings.BOTTOM_SPACING.XS}
         imageSize={16}
@@ -46,9 +50,10 @@ const Restaurant = (props) => {
           label="Edit review"
         />
       )}
-      <Typography.Subheader style={Spacings.BOTTOM_SPACING.L}>
-        Last reviews
-      </Typography.Subheader>
+      <Typography.Subheader>Last reviews</Typography.Subheader>
+      {restaurant.reviews.map((review) => (
+        <ReviewsListItem key={review.id} review={review} />
+      ))}
     </Containers.ScrollView>
   );
 };

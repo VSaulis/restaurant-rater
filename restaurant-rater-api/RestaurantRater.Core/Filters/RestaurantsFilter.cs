@@ -3,7 +3,6 @@
     public class RestaurantsFilter : BaseFilter
     {
         public int? LowestRating { get; set; }
-        public int? HighestRating { get; set; }
         public int? CreatedById { get; set; }
     }
 }

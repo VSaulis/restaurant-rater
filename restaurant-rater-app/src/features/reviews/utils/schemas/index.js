@@ -5,6 +5,7 @@ export const reviewSchema = yup.object().shape({
   rating: yup
     .number('Rating must be number')
     .integer('Rating must be integer')
+    .min(1, 'Rating is required')
     .required('Rating is required'),
   comment: yup
     .string()

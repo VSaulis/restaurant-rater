@@ -4,7 +4,6 @@ import ScreenContainer from './ScreenContainer';
 import Input from './Input';
 import HorizontalSlider from './HorizontalSlider';
 import ListSeparator from './ListSeparator';
-import PrimaryHeader from './PrimaryHeader';
 import IconButton from './IconButton';
 import Icon from './Icon';
 import Banner from './Banner';
@@ -18,6 +17,7 @@ import Slider from './Slider';
 import BottomSheet from './BottomSheet';
 import BottomSheetOption from './BottomSheetOption';
 import FullScreenContainer from './FullScreenContainer';
+import DatePicker from './DatePicker';
 
 export {
   Slider,
@@ -27,7 +27,6 @@ export {
   Input,
   HorizontalSlider,
   ListSeparator,
-  PrimaryHeader,
   IconButton,
   Icon,
   Banner,
@@ -40,4 +39,5 @@ export {
   BottomSheet,
   BottomSheetOption,
   FullScreenContainer,
+  DatePicker,
 };

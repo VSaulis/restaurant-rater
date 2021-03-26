@@ -1,9 +1,8 @@
 import React from 'react';
-import * as Styles from './styles';
 import { ViewPropTypes } from 'react-native';
 import { useChangePassword } from 'features/profile/hooks';
 import { Button, Input } from 'shared/components';
-import { Spacings, Typography, Containers } from 'shared/styles';
+import { Spacings, Containers } from 'shared/styles';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
 import { Schemas } from 'features/profile/utils';
@@ -16,11 +15,8 @@ const ProfileChangePassword = (props) => {
   });
 
   return (
-    <Styles.Container style={style}>
-      <Styles.Content contentContainerStyle={Spacings.FULL_PADDING}>
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.L}>
-          Change password
-        </Typography.Heading1>
+    <Containers.FilledContainer style={style}>
+      <Containers.ScrollView contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}>
         <Controller
           as={undefined}
           defaultValue=""
@@ -56,7 +52,7 @@ const ProfileChangePassword = (props) => {
             />
           )}
         />
-      </Styles.Content>
+      </Containers.ScrollView>
       <Containers.Footer>
         <Button
           label="Change password"
@@ -64,7 +60,7 @@ const ProfileChangePassword = (props) => {
           onPress={handleSubmit(changePassword)}
         />
       </Containers.Footer>
-    </Styles.Container>
+    </Containers.FilledContainer>
   );
 };
 

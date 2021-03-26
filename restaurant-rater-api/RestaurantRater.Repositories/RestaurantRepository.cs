@@ -22,12 +22,7 @@ namespace RestaurantRater.Repositories
             
             if (filter.LowestRating.HasValue)
             {
-                query = query.Where(restaurant => restaurant.AverageRating() >= filter.LowestRating.Value);
-            }
-            
-            if (filter.HighestRating.HasValue)
-            {
-                query = query.Where(restaurant => restaurant.AverageRating() <= filter.HighestRating.Value);
+                query = query.Where(restaurant => restaurant.Reviews.Average(review => review.Rating) >= filter.LowestRating.Value);
             }
 
             return query;

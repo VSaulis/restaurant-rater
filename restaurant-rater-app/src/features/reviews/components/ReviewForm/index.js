@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input, Rating } from 'shared/components';
+import { Button, DatePicker, Input, Rating } from 'shared/components';
 import { Spacings, Containers } from 'shared/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { ReviewPropTypes, Schemas } from 'features/reviews/utils';
@@ -39,14 +39,14 @@ const ReviewForm = (props) => {
           control={control}
           name="visited"
           render={({ onChange, onBlur, value }) => (
-            <Input
+            <DatePicker
               error={errors.visited}
-              onBlur={onBlur}
               style={Spacings.BOTTOM_SPACING.L}
               label="Visit date"
-              onChange={(event) => onChange(event.value)}
-              value={value}
               placeholder="Enter visit date"
+              value={value}
+              onBlur={onBlur}
+              onChange={(event) => onChange(event.value)}
             />
           )}
         />

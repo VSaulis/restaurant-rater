@@ -21,7 +21,7 @@ namespace RestaurantRater.Core.Models
 
         public double AverageRating()
         {
-            return Math.Round(Reviews.Select(review => review.Rating).DefaultIfEmpty().Average(), 2);
+            return Reviews.Average(review => review.Rating);
         }
     }
 }

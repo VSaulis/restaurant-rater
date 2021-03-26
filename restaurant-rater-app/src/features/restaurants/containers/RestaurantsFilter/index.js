@@ -42,9 +42,9 @@ const RestaurantsFilter = () => {
       <Containers.ScrollView contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}>
         <ExpandedSelect
           label="Rating"
-          value={localFilter.ratings}
+          value={localFilter.lowestRating}
           onChange={handleChange}
-          name="ratings"
+          name="lowestRating"
           options={RatingOptions}
         />
       </Containers.ScrollView>

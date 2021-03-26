@@ -7,7 +7,7 @@ import { UsersScreen } from 'features/users/screens';
 import { ProfileScreen } from 'features/profile/screens';
 import { ReviewsScreen } from 'features/reviews/screens';
 import { Colors, Icons } from 'shared/styles';
-import { Icon, PrimaryHeader } from 'shared/components';
+import { Icon } from 'shared/components';
 
 const Tabs = createBottomTabNavigator();
 

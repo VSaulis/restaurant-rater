@@ -1,7 +1,6 @@
 import React from 'react';
-import * as Styles from './styles';
 import { Button, Input } from 'shared/components';
-import { Spacings, Typography, Containers } from 'shared/styles';
+import { Spacings, Containers } from 'shared/styles';
 import { Controller, useForm } from 'react-hook-form';
 import { Schemas } from 'features/profile/utils';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,14 +15,11 @@ const ProfileEdit = () => {
   const { editProfile, isUpdating, isRefreshing, refresh } = useProfileEdit();
 
   return (
-    <Styles.Container>
-      <Styles.Content
+    <Containers.FilledContainer>
+      <Containers.ScrollView
         refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={refresh} />}
-        contentContainerStyle={Spacings.FULL_PADDING}
+        contentContainerStyle={Spacings.HORIZONTAL_PADDING.L}
       >
-        <Typography.Heading1 style={Spacings.BOTTOM_SPACING.L}>
-          Update profile
-        </Typography.Heading1>
         <Controller
           as={undefined}
           defaultValue={profile.email}
@@ -74,11 +70,11 @@ const ProfileEdit = () => {
             />
           )}
         />
-      </Styles.Content>
+      </Containers.ScrollView>
       <Containers.Footer>
         <Button label="Update" loading={isUpdating} onPress={handleSubmit(editProfile)} />
       </Containers.Footer>
-    </Styles.Container>
+    </Containers.FilledContainer>
   );
 };
 
